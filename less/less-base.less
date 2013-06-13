@@ -38,11 +38,11 @@
 .pr(@size){
     padding-right: @size;
 }
-.pl(@size){
-    padding-bottom: @size;
-}
 .pb(@size){
     padding-bottom: @size;
+}
+.pl(@size){
+    padding-left: @size;
 }
 
 /*  margin  */
@@ -56,11 +56,11 @@
 .mr(@size){
     margin-right: @size;
 }
-.ml(@size){
-    margin-bottom: @size;
-}
 .mb(@size){
     margin-bottom: @size;
+}
+.ml(@size){
+    margin-left: @size;
 }
 
 /*  background  */
@@ -73,6 +73,18 @@
 
 .bd(@color, @width: 1px, @style: solid){
     border: @width @style @color;
+}
+.bt(@color, @width: 1px, @style: solid){
+    border-top: @width @style @color;
+}
+.br(@color, @width: 1px, @style: solid){
+    border-right: @width @style @color;
+}
+.bb(@color, @width: 1px, @style: solid){
+    border-bottom: @width @style @color;
+}
+.bl(@color, @width: 1px, @style: solid){
+    border-left: @width @style @color;
 }
 
 /*  text-align  */
