@@ -1,0 +1,107 @@
+﻿/*  @ base  */
+
+@imgUrl : "../images/";
+/*  float with inline  */
+
+.fl(){
+    float: left;
+    display: inline-block; *display: inline; *zoom: 1;
+}
+.fr(){
+    float: right;
+    display: inline-block; *display: inline; *zoom: 1;
+}
+
+/*   position */
+
+.pos-s(){
+    position: static;
+}
+.pos-r(){
+    position: relative;
+}
+.pos-a(){
+    position: absolute;
+}
+.pos-f(){
+    position: fixed;
+}
+
+/*  padding  */
+
+.pd(@size){
+    padding: @size;
+}
+.pt(@size){
+    padding-top: @size;
+}
+.pr(@size){
+    padding-right: @size;
+}
+.pl(@size){
+    padding-bottom: @size;
+}
+.pb(@size){
+    padding-bottom: @size;
+}
+
+/*  margin  */
+
+.mg(@size){
+    margin: @size;
+}
+.mt(@size){
+    margin-top: @size;
+}
+.mr(@size){
+    margin-right: @size;
+}
+.ml(@size){
+    margin-bottom: @size;
+}
+.mb(@size){
+    margin-bottom: @size;
+}
+
+/*  background  */
+
+.bg(@name, @rest...){
+    background: url("@{imgUrl}@{name}") @rest;
+}
+
+/*  border  */
+
+.bd(@color, @width: 1px, @style: solid){
+    border: @width @style @color;
+}
+
+/*  text-align  */
+
+.tl(){
+    text-align: left;
+}
+.tc(){
+    text-align: center;
+}
+.tr(){
+    text-align: right;
+}
+
+/*  vertical-align  */
+
+.vt(){
+    vertical-align: top;
+}
+.vm(){
+    vertical-align: middle;
+}
+.vb(){
+    vertical-align: bottom;
+}
+
+/* cursor */
+
+.cur-p(){
+    cursor: pointer;
+}
+
