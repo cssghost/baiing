@@ -1,18 +1,26 @@
-﻿/*  @ base  */
+﻿//  @ base  
 
 @imgUrl : "../images/";
-/*  float with inline  */
+
+//  float  
 
 .fl(){
     float: left;
-    display: inline-block; *display: inline; *zoom: 1;
 }
 .fr(){
+    float: right;
+}
+
+.fl-i(){
+    float: left;
+    display: inline-block; *display: inline; *zoom: 1;
+}
+.fr-i(){
     float: right;
     display: inline-block; *display: inline; *zoom: 1;
 }
 
-/*   position */
+//   position 
 
 .pos-s(){
     position: static;
@@ -27,7 +35,7 @@
     position: fixed;
 }
 
-/*  padding  */
+//  padding  
 
 .pd(@size){
     padding: @size;
@@ -45,7 +53,7 @@
     padding-left: @size;
 }
 
-/*  margin  */
+//  margin 
 
 .mg(@size){
     margin: @size;
@@ -63,7 +71,7 @@
     margin-left: @size;
 }
 
-/*  background  */
+//  background 
 
 .bg(@name, @rest...){
     background: url("@{imgUrl}@{name}") @rest;
@@ -78,7 +86,7 @@
     background-position: @position;
 }
 
-/*  border  */
+// border
 
 .bd(@color, @width: 1px, @style: solid){
     border: @width @style @color;
@@ -96,7 +104,7 @@
     border-left: @width @style @color;
 }
 
-/*  text-align  */
+//  text-align  
 
 .tl(){
     text-align: left;
@@ -108,7 +116,7 @@
     text-align: right;
 }
 
-/*  vertical-align  */
+//  vertical-align  
 
 .vt(){
     vertical-align: top;
@@ -120,7 +128,7 @@
     vertical-align: bottom;
 }
 
-/* cursor */
+// cursor 
 
 .cur-p(){
     cursor: pointer;
