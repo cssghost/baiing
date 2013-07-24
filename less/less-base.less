@@ -1,6 +1,8 @@
 ﻿//  @ base  
 
-@imgUrl : "../images/";
+@imgUrlLib : "../../images/lib/";
+@imgUrlTpls : "../../images/tpls/";
+@imgUrlTemp : "../../images/temp/";
 
 //  float  
 
@@ -35,72 +37,87 @@
     position: fixed;
 }
 
+// block
+
+.w(@size: 100%){
+    width: @size;
+}
+.h(@size: 100%){
+    height: @size;
+}
+
 //  padding  
 
-.pd(@size){
+.pd(@size: 0){
     padding: @size;
 }
-.pt(@size){
+.pt(@size: 0){
     padding-top: @size;
 }
-.pr(@size){
+.pr(@size: 0){
     padding-right: @size;
 }
-.pb(@size){
+.pb(@size: 0){
     padding-bottom: @size;
 }
-.pl(@size){
+.pl(@size: 0){
     padding-left: @size;
 }
 
 //  margin 
 
-.mg(@size){
+.mg(@size: 0 auto){
     margin: @size;
 }
-.mt(@size){
+.mt(@size: 0){
     margin-top: @size;
 }
-.mr(@size){
+.mr(@size: 0){
     margin-right: @size;
 }
-.mb(@size){
+.mb(@size: 0){
     margin-bottom: @size;
 }
-.ml(@size){
+.ml(@size: 0){
     margin-left: @size;
 }
 
 //  background 
 
-.bg(@name, @rest...){
-    background: url("@{imgUrl}@{name}") @rest;
+.bg-lib(@name: "i.gif", @rest...){
+    background: url("@{imgUrlLib}@{name}") @rest;
 }
-.bc(@color){
+.bg-tpls(@name: "i.gif", @rest...){
+    background: url("@{imgUrlTpls}@{name}") @rest;
+}
+.bg-temp(@name: "i.gif", @rest...){
+    background: url("@{imgUrlTemp}@{name}") @rest;
+}
+.bc(@color: transparent){
     background-color: @color;
 }
-.bi(@name){
+.bi(@name: "i.gif"){
     background-image: url("@{imgUrl}@{name}");
 }
-.bp(@position){
+.bp(@position: 0 0){
     background-position: @position;
 }
 
 // border
 
-.bd(@color, @width: 1px, @style: solid){
+.bd(@color: #CCC, @width: 1px, @style: solid){
     border: @width @style @color;
 }
-.bt(@color, @width: 1px, @style: solid){
+.bt(@color: #CCC, @width: 1px, @style: solid){
     border-top: @width @style @color;
 }
-.br(@color, @width: 1px, @style: solid){
+.br(@color: #CCC, @width: 1px, @style: solid){
     border-right: @width @style @color;
 }
-.bb(@color, @width: 1px, @style: solid){
+.bb(@color: #CCC, @width: 1px, @style: solid){
     border-bottom: @width @style @color;
 }
-.bl(@color, @width: 1px, @style: solid){
+.bl(@color: #CCC, @width: 1px, @style: solid){
     border-left: @width @style @color;
 }
 
@@ -126,6 +143,24 @@
 }
 .vb(){
     vertical-align: bottom;
+}
+
+// font
+
+.lh(@size: 18px){
+    line-height: @size; 
+}
+.fz(@size: 12px){
+    font-size: @size;
+}
+.fw(@size: bold){
+    font-weight: @size;
+}
+.fm(@family: "Microsoft YaHei"){
+    font-family: @family;
+}
+.c(@color: #000){
+    color: @color;
 }
 
 // cursor 
