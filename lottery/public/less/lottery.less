@@ -1,0 +1,45 @@
+@import "config/less-base";
+
+.wrap {
+    .w(1000px);
+    .mg(100px auto);
+}
+.lottery-box {
+    .w(300px); .h(200px);
+}
+.lottery-result {
+    .pos-r();
+    .w(300px); .h(200px);
+    .mg(0 auto);
+    .bg-lib("i.gif", no-repeat center top);
+    &-first {
+        .bi-temp("first.jpg");
+    }
+    &-second {
+        .bi-temp("second.jpg");
+    }
+    &-third {
+        .bi-temp("third.jpg");
+    }
+    &-failed {
+        .bi-temp("failed.jpg");
+    }
+    & .layer-left,
+    & .layer-right,
+    & .layer-block {
+        .pos-a(); top: 0;
+        .w(100%); .h(100%);
+        .bc(#CCC);
+    }
+    & .layer-left {
+        left: 0;
+    }
+    & .layer-right {
+        // .dis-n();
+        right: 0;
+    }
+    & .layer-block {
+        .dis-n();
+        .w(10px);
+    }
+}
