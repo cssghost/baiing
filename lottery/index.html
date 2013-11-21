@@ -23,24 +23,17 @@ $(function() {
         $layerRight = $lotteryBox.find(".layer-right"),
         $layerBlock = $lotteryBox.find(".layer-block");
     $lotteryBox.on("click", function(event){
-        var num = $.cookie("lotteryNum");
-        num = num == undefined ? 3 : Math.floor(num);
-        if ( num <= 0 ) {
-            alert("您的剩余抽奖次数为0，感谢您的参与！");
-            return false;
-        }
-        if ( !$layerLeft.is(":animated") ) {
-            var width = $lotteryBox.width(),
-                show = event.offsetX ? event.offsetX : event.originalEvent.layerX,
-                widthL = show,
-                widthR = width - show;
-            $layerLeft.width(widthL);
-            $layerRight.width(widthR);
-            $layerLeft.animate({ width: 0 }, 400);
-            $layerRight.animate({ width: 0 }, 400);
-            num--;
-            $.cookie("lotteryNum", num,{ expires: 7, path: '/' });
-        }
+        var width = $lotteryBox.width(),
+            show = event.offsetX ? event.offsetX : event.originalEvent.layerX,
+            widthL = show,
+            widthR = width - show;
+        console.log(widthL, widthR);
+        $layerLeft.width(widthL);
+        $layerRight.width(widthR);
+        $layerLeft.animate({ width: 0 }, 400);
+        $layerRight.animate({ width: 0 }, 400);
+        $.cookie("test", "haha",{ expires: 7, path: '/' });
+        console.log($.cookie("test"));
     });
 });
 </script>
