@@ -1,8 +1,23 @@
 ﻿//  @ base  
 
-@imgUrlLib : "../../images/lib/";
-@imgUrlTpls : "../../images/tpls/";
-@imgUrlTemp : "../../images/temp/";
+@imgUrlLib : "../images/lib/";
+@imgUrlTpls : "../images/tpls/";
+@imgUrlTemp : "../images/temp/";
+
+// display
+
+.dis-i(){
+    display: inline;
+}
+.dis-ib(){
+    display: inline-block;
+}
+.dis-b(){
+    display: block;
+}
+.dis-n(){
+    display: none;
+}
 
 //  float  
 
@@ -84,6 +99,9 @@
 
 //  background 
 
+.bg(@name: "i.gif", @rest...){
+    background: url("@{imgUrl}@{name}") @rest;
+}
 .bg-lib(@name: "i.gif", @rest...){
     background: url("@{imgUrlLib}@{name}") @rest;
 }
@@ -93,14 +111,26 @@
 .bg-temp(@name: "i.gif", @rest...){
     background: url("@{imgUrlTemp}@{name}") @rest;
 }
-.bc(@color: transparent){
+.bc(@color: #FFF){
     background-color: @color;
 }
 .bi(@name: "i.gif"){
     background-image: url("@{imgUrl}@{name}");
 }
+.bi-lib(@name: "i.gif"){
+    background-image: url("@{imgUrlLib}@{name}");
+}
+.bi-tpls(@name: "i.gif"){
+    background-image: url("@{imgUrlTpls}@{name}");
+}
+.bi-temp(@name: "i.gif"){
+    background-image: url("@{imgUrlTemp}@{name}");
+}
 .bp(@position: 0 0){
     background-position: @position;
+}
+.bg-none() {
+    background: none;
 }
 
 // border
@@ -119,6 +149,21 @@
 }
 .bl(@color: #CCC, @width: 1px, @style: solid){
     border-left: @width @style @color;
+}
+.bd-none() {
+    border: none;
+}
+.bt-none() {
+    border-top: none;
+}
+.br-none() {
+    border-right: none;
+}
+.bb-none() {
+    border-bottom: none;
+}
+.bl-none() {
+    border-left: none;
 }
 
 //  text-align  
@@ -145,6 +190,21 @@
     vertical-align: bottom;
 }
 
+// text-indent
+
+.ti(@size: 2em){
+    text-indent: @size; 
+}
+
+// text-decoration
+
+.td-none() {
+    text-decoration: none;
+}
+.td-un() {
+    text-decoration: underline;
+}
+
 // font
 
 .lh(@size: 18px){
@@ -167,5 +227,32 @@
 
 .cur-p(){
     cursor: pointer;
+}
+
+.opacity(@size){
+    opacity: @size;
+    filter:~'alpha(opacity='(@size * 100) ~')';
+}
+
+// css3
+
+.box-shadow(@color: #000, @size: 0 0 1 0){
+    -moz-box-shadow: @size @color;
+    -webkit-box-shadow: @size @color;
+    box-shadow: @size @color;
+}
+.border-radius(@size){
+    -moz-border-radius : @size;
+    -webkit-border-radius : @size;
+    border-radius : @size;
+}
+.text-shadow(@type: 0 1px 1px rgba(255, 255, 255, 0.75)){
+    text-shadow: @type;
+}
+.transition(@type: background-position 0.1s linear){
+    -webkit-transition: @type;
+    -moz-transition: @type;
+    -o-transition: @type;
+    transition: @type;
 }
 
