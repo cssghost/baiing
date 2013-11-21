@@ -12,9 +12,12 @@ exports.doLottery = function(req, res){
     var thisCookie = new cookie(_cookieData);
     var result = {};
     var num = thisCookie.get('lotteryNum');
+    var arrPrize = ["failed", "third", "second", "first"];
+    var prize = parseInt(Math.random()*(3-0+1)+0);
     num = ( num == '' ) ? 3 : Math.floor(num);
     result.success = num <= 0 ? false : true;
     result.num = num;
+    result.prize = arrPrize[prize];
     res.writeHead(200, { 'Content-Type': 'application/json'} );
     res.end( JSON.stringify( result ) );
 }
