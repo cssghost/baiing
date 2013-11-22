@@ -1,14 +1,11 @@
-/* line 3, lottery.less */
 .wrap {
   width: 1000px;
   margin: 100px auto;
 }
-/* line 7, lottery.less */
 .lottery-box {
   width: 300px;
   height: 200px;
 }
-/* line 10, lottery.less */
 .lottery-result {
   position: relative;
   width: 300px;
@@ -16,42 +13,29 @@
   margin: 0 auto;
   background: url("../images/lib/i.gif") no-repeat center top;
 }
-/* line 15, lottery.less */
 .lottery-result-first {
   background-image: url("../images/temp/first.jpg");
 }
-/* line 18, lottery.less */
 .lottery-result-second {
   background-image: url("../images/temp/second.jpg");
 }
-/* line 21, lottery.less */
 .lottery-result-third {
   background-image: url("../images/temp/third.jpg");
 }
-/* line 24, lottery.less */
 .lottery-result-failed {
   background-image: url("../images/temp/failed.jpg");
 }
-/* line 27, lottery.less */
 .lottery-result .layer-left,
-.lottery-result .layer-right,
-.lottery-result .layer-block {
+.lottery-result .layer-right {
   position: absolute;
   top: 0;
-  width: 100%;
+  width: 50%;
   height: 100%;
   background-color: #cccccc;
 }
-/* line 34, lottery.less */
 .lottery-result .layer-left {
   left: 0;
 }
-/* line 37, lottery.less */
 .lottery-result .layer-right {
   right: 0;
-}
-/* line 41, lottery.less */
-.lottery-result .layer-block {
-  display: none;
-  width: 10px;
 }
