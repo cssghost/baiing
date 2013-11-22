@@ -38,7 +38,7 @@ var jiathis_config={
     summary:"test content",
     title:"test title  ##",
     shortUrl:false,
-    hideMore:false
+    hideMore:true
 }
 </script>
 <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
@@ -121,7 +121,12 @@ $(function() {
     });
 
     $(".jiathis_button_tsina").on("click", function(){
-        popup.show();
+        window.location = "http://www.baidu.com";
+        // popup.show();
+    });
+    $(document).on("click", "span.jtico", function(){
+        window.location = "http://www.baidu.com";
+        // popup.show();
     });
 
 });
