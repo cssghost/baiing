@@ -25,6 +25,26 @@
         <input type="button" value="查找附近" class="Js-scene" data-scene="near" />
         <input type="button" value="出国服务" class="Js-scene" data-scene="abroad" />
     </div>
+
+<!-- JiaThis Button BEGIN -->
+<div class="jiathis_style_32x32">
+<a class="jiathis_button_tsina"></a>
+<a class="jiathis_button_weixin"></a>
+<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+    url:"www.baidu.com",
+    summary:"test content",
+    title:"test title  ##",
+    shortUrl:false,
+    hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+
 <script>
 $(function() {
     var $lotteryBox = $(".lottery-result"),
@@ -99,7 +119,14 @@ $(function() {
             option.hide();
         }
     });
+
+    $(".jiathis_button_tsina").on("click", function(){
+        popup.show();
+    });
+
 });
 </script>
+
+
 </body>
 </html>

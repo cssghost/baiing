@@ -231,14 +231,16 @@ $.cgPopup = function(options){
          * @event
          */
         bindDrag : function(){
-            var _drag = {};
+            var _drag = {},
+                width = $popup.width(),
+                height = $popup.height();
             // bind drag
             $title.css("cursor", "move");
             $popup.on("mousedown", ".Js-popup-title", function(event) {
                 event.preventDefault();
                 var _position = $popup.position();
                 _drag.posLeft = _position.left;
-                _drag.posTop = _position.top;
+                _drag.posTop = _position.top - $(window).scrollTop();
                 _drag.dl = event.pageX;
                 _drag.dt = event.pageY;
                 $(document).on("mousemove", function(e){
@@ -253,7 +255,7 @@ $.cgPopup = function(options){
                     });
                 });
                 $(document).one("mouseup", function(){
-                    $(document).off("mousemove");
+                    $(document).off("mousemove mouseup");
                 });
             });
         },
