@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lottery</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/popup.css">
+    <link rel="stylesheet" href="css/lottery.css">
+    <script src="js/modernizr.js"></script>
+    <script src="js/jquery-1.8.2.js"></script>
+    <script src="js/jquery.cookie.js"></script>
+    <script src="js/jquery.plugin.js"></script>
+</head>
+<body>
+    <div class="wrap">
+        <div class="lottery-result lottery-result-first">
+            <div class="layer-left"></div>
+            <div class="layer-right"></div>
+            <div class="layer-block"></div>
+        </div>
+        <input type="button" value="继续抽奖" class="reset" />
+        <input type="button" value="套餐" class="Js-scene" data-scene="pack" />
+        <input type="button" value="手机" class="Js-scene" data-scene="mobile" />
+        <input type="button" value="营业厅" class="Js-scene" data-scene="hall" />
+        <input type="button" value="查找附近" class="Js-scene" data-scene="near" />
+        <input type="button" value="出国服务" class="Js-scene" data-scene="abroad" />
+    </div>
+
+<!-- JiaThis Button BEGIN -->
+<div class="jiathis_style_32x32">
+<a class="jiathis_button_tsina"></a>
+<a class="jiathis_button_weixin"></a>
+<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+    url:"www.baidu.com",
+    summary:"test content",
+    title:"test title  ##",
+    shortUrl:false,
+    hideMore:true
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+
+<script>
+$(function() {
+
+    var $lotteryBox = $(".lottery-result"),
+        $layerLeft = $lotteryBox.find(".layer-left"),
+        $layerRight = $lotteryBox.find(".layer-right"),
+        isLottery = false;
+    $lotteryBox.on("click", function(event){
+        if ( !isLottery && !$layerLeft.is(":animated") ) {
+            $.ajax({
+                url : "/doLottery",
+                type : "post",
+                data : {},
+                dataType : "json",
+                success : function(result){
+                    // console.log(result);
+                    if ( result.success ) {
+                        if ( result.num <= 0 ) {
+                            alert("您的剩余抽奖次数为0，感谢您的参与！");
+                            return false;
+                        }
+                        var width = $lotteryBox.width(),
+                            show = event.offsetX ? event.offsetX : event.originalEvent.layerX,
+                            widthL = show,
+                            widthR = width - show;
+                        $lotteryBox.removeClass().addClass("lottery-result lottery-result-" + result.prize);
+                        $layerLeft.width(widthL);
+                        $layerRight.width(widthR);
+                        $layerLeft.animate({ width: 0 }, 400);
+                        $layerRight.animate({ width: 0 }, 400);
+                        result.num--;
+                        $.cookie("lotteryNum", result.num,{ expires: 7, path: '/' });
+                        isLottery = true;
+                    } else{
+                        alert("操作异常，请重新尝试");
+                    }
+                },
+                error : function(){
+                    alert("操作异常，请重新尝试");
+                }
+            });
+        }
+    });
+
+    $(".reset").on("click", function(){
+        isLottery = false;
+        $layerLeft.animate({ width: 50 + "%" }, 400);
+        $layerRight.animate({ width: 50 + "%" }, 400);
+        popup.show();
+    });
+
+    $(".Js-scene").on("click", function(){
+        var $scene = $(this),
+            strScene = $scene.data("scene"),
+            cookieScene = $.cookie("scene"),
+            reg = new RegExp("###" + strScene, "gi");
+        cookieScene = cookieScene ? cookieScene : "";
+        if ( !cookieScene.match(reg) ) {
+            $.cookie("scene", cookieScene + "###" + strScene);
+        }
+        if( $.cookie("scene").split("###").length > 3 ){
+            popup.show();
+        }
+    });
+
+    var popup = $.cgPopup({
+        title : "提示",
+        autoShow : false,
+        cancel : function(option){
+            option.hide();
+        },
+        done : function(option){
+            option.hide();
+        }
+    });
+
+    $(".jiathis_button_tsina").on("click", function(){
+        window.location = "http://www.baidu.com";
+        // popup.show();
+    });
+    $(document).on("click", "span.jtico", function(){
+        window.location = "http://www.baidu.com";
+        // popup.show();
+    });
+
+});
+</script>
+
+
+</body>
+</html>
