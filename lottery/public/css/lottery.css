@@ -1,3 +1,350 @@
+body {
+  background-color: #be073f;
+}
+.theme-lottery-body-time {
+  width: 100%;
+  height: 211px;
+  background: url("../images/temp/theme-lottery-bg-time.jpg") no-repeat center;
+}
+.theme-lottery-body-time .frame {
+  width: 1100px;
+  height: 211px;
+  margin: 0 auto;
+}
+.theme-lottery-body-time .time {
+  width: 360px;
+  padding: 140px 0 0 85px;
+  font: 400 16px/24px "Microsoft YaHei";
+  color: #ffffff;
+}
+.theme-lottery-body-prod {
+  width: 100%;
+  height: 480px;
+  background: url("../images/temp/theme-lottery-bg-prod.jpg") no-repeat center;
+}
+.theme-lottery-body-process {
+  width: 100%;
+  height: 255px;
+  background: url("../images/temp/theme-lottery-bg-process.jpg") no-repeat center;
+}
+.theme-lottery-body-process .frame {
+  width: 1055px;
+  height: 255px;
+  padding-left: 45px;
+  margin: 0 auto;
+}
+.theme-lottery-body-process .ok {
+  float: left;
+  width: 70px;
+  height: 66px;
+  margin: 95px 65px 0;
+  background: url("../images/temp/theme-lottery-ok.png") no-repeat center;
+}
+.theme-lottery-wrap {
+  width: 1100px;
+  margin: 0 auto;
+  background-color: #be073f;
+}
+.theme-lottery-head {
+  width: 100%;
+  height: 44px;
+  background: url("../images/temp/theme-lottery-head.png") no-repeat center;
+}
+.theme-lottery-head .text {
+  overflow: hidden;
+  width: 152px;
+  height: 44px;
+  margin: 0 auto;
+  background: url("../images/temp/theme-lottery-head-text.png") no-repeat 0 0;
+  text-indent: -9999px;
+}
+.theme-lottery-head .rule {
+  background-position: 0 0;
+}
+.theme-lottery-head .question {
+  background-position: 0 -44px;
+}
+.theme-lottery-head .lottery {
+  background-position: 0 -88px;
+}
+.theme-lottery-footer {
+  width: 100%;
+  height: 50px;
+  background-color: #000000;
+  line-height: 50px;
+  text-align: center;
+  color: #999999;
+}
+.theme-lottery-footer span {
+  margin-left: 60px;
+}
+.theme-lottery-rule {
+  width: 820px;
+  height: 645px;
+  padding: 110px 70px 0;
+  margin: 0 auto;
+  background: url("../images/temp/theme-lottery-rule-paper.png") no-repeat 0 0;
+}
+.theme-lottery-rule .title {
+  width: 145px;
+  height: 34px;
+  margin: 10px 0;
+  background: url("../images/temp/theme-lottery-rule-title.png") no-repeat 0 0;
+  font: 600 14px/34px "Microsoft YaHei";
+  text-indent: 40px;
+  color: #ffffff;
+}
+.theme-lottery-rule p {
+  padding-left: 35px;
+  line-height: 24px;
+  font-size: 14px;
+}
+.theme-lottery-rule .small {
+  margin-top: 30px;
+  font-size: 12px;
+}
+.theme-lottery-rule .important {
+  font-weight: bold;
+  color: #ff0000;
+}
+.theme-lottery-btn {
+  overflow: hidden;
+  display: block;
+  width: 216px;
+  height: 59px;
+  background: url("../images/temp/theme-lottery-button.png") no-repeat 0 0;
+  border: none;
+  text-indent: -9999px;
+  cursor: pointer;
+}
+.theme-lottery-btn-join {
+  margin: 20px auto 125px;
+  background-position: 0 0;
+  width: 216px;
+  height: 59px;
+}
+.theme-lottery-question {
+  width: 945px;
+  height: 1105px;
+  padding: 65px 75px 0 90px;
+  margin: 0 auto 80px;
+  background: url("../images/temp/theme-lottery-question-paper.png") no-repeat 0 0;
+}
+.theme-lottery-question .table {
+  float: left;
+  width: 680px;
+  margin-top: 45px;
+}
+.theme-lottery-question .table th {
+  line-height: 35px;
+  font-size: 14px;
+}
+.theme-lottery-question .table td {
+  line-height: 30px;
+  font-size: 14px;
+}
+.theme-lottery-question .table label {
+  vertical-align: middle;
+}
+.theme-lottery-question .table label.parse-line {
+  margin-right: 25px;
+}
+.theme-lottery-question .table input[type="checkbox"],
+.theme-lottery-question .table input[type="radio"] {
+  margin-right: 5px;
+  vertical-align: middle;
+}
+.theme-lottery-question .table input[type="text"] {
+  width: 450px;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #000000;
+}
+.theme-lottery-question .table textarea {
+  width: 550px;
+  height: 120px;
+  background-color: #f3edce;
+  border: 1px solid #9f662e;
+}
+.theme-lottery-question .table .line {
+  float: left;
+  width: 300px;
+}
+.theme-lottery-question .table .in-line {
+  float: left;
+  width: 165px;
+}
+.theme-lottery-question .table .clear-line {
+  clear: both;
+  width: 100%;
+}
+.theme-lottery-question .table span {
+  color: #ff0000;
+}
+.theme-lottery-question .table em {
+  color: #b25900;
+}
+.theme-lottery-question .rule {
+  width: 250px;
+  float: right;
+}
+.theme-lottery-question .title {
+  width: 145px;
+  height: 34px;
+  margin: 10px 0;
+  background: url("../images/temp/theme-lottery-rule-title.png") no-repeat 0 0;
+  font: 600 14px/34px "Microsoft YaHei";
+  text-indent: 40px;
+  color: #ffffff;
+}
+.theme-lottery-question p {
+  padding-left: 12px;
+  line-height: 18px;
+}
+.theme-lottery-question .small {
+  margin-top: 30px;
+  font-size: 12px;
+}
+.theme-lottery-question .prod {
+  color: #cc0000;
+}
+.theme-lottery-question .important {
+  font-weight: bold;
+  color: #ffd400;
+}
+.theme-lottery-question .submit {
+  width: 162px;
+  height: 50px;
+  margin: 30px 0 0 185px;
+  background-position: 0 -60px;
+}
+.theme-lottery-lottery {
+  width: 945px;
+  height: 400px;
+  padding: 65px 75px 0 90px;
+  margin: 0 auto 90px;
+  background: url("../images/temp/theme-lottery-lottery-paper.png") no-repeat 0 0;
+}
+.theme-lottery-popup {
+  width: 390px;
+  border: 1px solid #e48317;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  -moz-box-shadow: 0 0 1 0 none;
+  -webkit-box-shadow: 0 0 1 0 none;
+  box-shadow: 0 0 1 0 none;
+}
+.theme-lottery-popup a.popup-close {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  background: url("../images/temp/lottery-popup.png") no-repeat 0 -145px;
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
+}
+.theme-lottery-popup a.popup-close:hover {
+  background-position: 0 -145px;
+}
+.theme-lottery-popup .popup-tit {
+  width: 100%;
+  height: 37px;
+  padding: 0;
+  background: none;
+  background: url("../images/temp/lottery-popup.png") repeat-x 0 -105px;
+  font: 400 18px/37px "Microsoft YaHei";
+  text-indent: 12px;
+  color: #ffffff;
+}
+.theme-lottery-popup .popup-con {
+  width: 335px;
+  padding: 0;
+  margin: 30px auto;
+}
+.theme-lottery-popup .popup-btn-wrap {
+  width: 390px;
+  height: 50px;
+  margin: 0 auto;
+}
+.theme-lottery-popup .popup-btn,
+.theme-lottery-popup .popup-btn-text {
+  height: 50px;
+  background: url("../images/temp/lottery-popup.png") no-repeat;
+  text-decoration: none;
+  color: #ffffff;
+}
+.theme-lottery-popup .popup-btn {
+  overflow: hidden;
+  width: 160px;
+  padding: 0;
+  margin: 0 10px;
+  background-position: right 0;
+}
+.theme-lottery-popup .popup-btn:hover {
+  background-position: right 0;
+}
+.theme-lottery-popup .popup-btn:hover .popup-btn-text {
+  background-position: left 0;
+}
+.theme-lottery-popup .popup-btn:active {
+  background-position: right 0;
+  outline: 0;
+}
+.theme-lottery-popup .popup-btn:active .popup-btn-text {
+  background-position: left 0;
+}
+.theme-lottery-popup .popup-btn-disabled {
+  background-position: right 0;
+}
+.theme-lottery-popup .popup-btn-disabled .popup-btn-text {
+  background-position: left 0;
+}
+.theme-lottery-popup .popup-btn-disabled:hover {
+  background-position: right 0;
+}
+.theme-lottery-popup .popup-btn-disabled:hover .popup-btn-text {
+  background-position: left 0;
+}
+.theme-lottery-popup .popup-btn-disabled:active {
+  background-position: right 0;
+  outline: 0;
+}
+.theme-lottery-popup .popup-btn-disabled:active .popup-btn-text {
+  background-position: left 0;
+}
+.theme-lottery-popup .popup-btn-text {
+  width: 160px;
+  padding: 0;
+  margin: 0;
+  background-position: left 0;
+  vertical-align: top;
+  text-indent: -9999px;
+}
+.theme-lottery-popup .popup-btn-wrap .cancel {
+  background-position: right -51px;
+}
+.theme-lottery-popup .popup-btn-wrap .cancel:hover {
+  background-position: right -51px;
+}
+.theme-lottery-popup .popup-btn-wrap .cancel:hover .popup-btn-text {
+  background-position: left -51px;
+}
+.theme-lottery-popup .popup-btn-wrap .cancel:active {
+  background-position: right -51px;
+  outline: -51px;
+}
+.theme-lottery-popup .popup-btn-wrap .cancel:active .popup-btn-text {
+  background-position: left -51px;
+}
+.theme-lottery-popup .popup-btn-wrap .cancel .popup-btn-text {
+  background-position: left -51px;
+  color: #666666;
+}
+.theme-lottery-popup .confirm-msg {
+  font: 400 14px/22px "Microsoft YaHei";
+}
 .wrap {
   width: 1000px;
   margin: 100px auto;

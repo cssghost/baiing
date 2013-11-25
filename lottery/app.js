@@ -30,7 +30,7 @@ if ('development' == app.get('env')) {
 
 app.get('/', routes.index);
 app.get('/users', user.list);
-app.get('/view', routes.view);
+app.get('/question', routes.question);
 app.get('/lottery', routes.lottery);
 app.post('/doLottery', routes.doLottery);
 app.post('/canJoin', routes.canJoin);

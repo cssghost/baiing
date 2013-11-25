@@ -12,7 +12,7 @@ html{
 	-webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
 }
-html, body { height: 100%; margin: 0; padding: 0; }
+html, body { margin: 0; padding: 0; }
 .clr:after{content:".";display:block;height:0;clear:both;visibility:hidden;}
 .clr{zoom:1;}
 

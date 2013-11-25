@@ -12,8 +12,45 @@
     <script src="js/jquery.plugin.js"></script>
 </head>
 <body>
-    <div class="Js-join">参加活动</div>
-
+    <div class="theme-lottery-body-time">
+        <div class="frame">
+            <p class="time">活动时间：2013年12月1日—2013年12月15日</p>
+        </div>
+    </div>
+    <div class="theme-lottery-body-prod"></div>
+    <div class="theme-lottery-body-process">
+        <div class="frame">
+            <img src="images/lib/i.gif" alt="" class="ok" />
+            <img src="images/lib/i.gif" alt="" class="ok" />
+            <img src="images/lib/i.gif" alt="" class="ok" />
+        </div>
+    </div>
+    <div class="theme-lottery-wrap">
+        <div class="theme-lottery-head">
+            <h1 class="text rule"></h1>
+        </div>
+    </div>
+    <div class="theme-lottery-rule">
+        <h6 class="title">活动规则</h6>
+        <p>活动期间，用户参与“分享调查问卷，赢三星盖世4”活动，就有机会赢取丰厚奖品！</p>
+        <p>1.用户登录湖南电信10000知道，填写调查问卷并分享至社交网站，即可参与抽奖。</p>
+        <p>2.用户仅在分享当日有三次抽奖资格，不累计。</p>
+        <p>3.中奖结果将在10000知道和湖南电信微博公布。</p>
+        <p>4.工作人员将在活动结束后的3个工作日内联系中奖用户核对姓名、地址，请保持联系方式畅通，如因多次致电联系不上，视为主动放弃奖励。</p>
+        <p>5.奖品在活动结束后15个工作日内寄出，邮费由本公司承担，话费将在活动结束后7个工作日内到账。</p>
+        <p>6.请获奖用户在提示界面详细登记姓名、邮寄地址、联系方式，如遇邮寄地址、联系方式错误导致奖品无法送达，本公司不承担责任。</p>
+        <p>7.请各位小伙伴遵守活动规则，如果有恶意注册等作弊手段，本次活动资格会被取消。</p>
+        <h6 class="title">活动时间</h6>
+        <p class="important">2013年12月1日——2013年12月15日</p>
+        <h6 class="title">活动奖励</h6>
+        <p>一等奖：1名；三星 I959（盖世4）</p>
+        <p>二等奖：3名；华为C8813Q</p>
+        <p>三等奖：5名；无线网卡（IPLINK-TR761-5200L）</p>
+        <p>幸运奖：1000名；2元话费</p>
+        <p class="small">活动的最终解释权归湖南电信所有</p>
+    </div>
+    <input type="button" class="theme-lottery-btn theme-lottery-btn-join Js-join" value="我要参与" />
+    <div class="theme-lottery-footer">版权所有：湖南电信<span>技术支持：百应科技(北京)有限公司</span></div>
 <script>
 $(function() {
     $(".Js-join").on("click", function(){
@@ -23,23 +60,23 @@ $(function() {
             dataType : "json",
             success : function(result){
                 if ( result.success ) {
-                    if ( result.url == "view" ) {
-                        window.location = "/view";
-                    } else{
-                        window.location = "/lottery";
-                    }
+                    window.location.href = "/lottery";
                 } else{
                     $.cgPopup({
-                        type : "result",
-                        message : "出错啦，重新试一下吧"
+                        type : "confirm",
+                        title : "提示",
+                        message : "亲，你需要浏览3个以上的频道才可以参加抽奖哦！",
+                        doneText : "马上去浏览",
+                        cancelText : "放弃",
+                        addClass : "theme-lottery-popup",
+                        done : function(){
+                            window.location.href = "/question";
+                        }
                     });
                 }
             }
         });
     });
-
-
-
 });
 </script>
 

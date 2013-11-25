@@ -1,5 +1,339 @@
 @import "config/less-base";
 
+body {
+    .bc(#BE073F);
+}
+
+.theme-lottery-body-time {
+    .w(100%); .h(211px);
+    .bg-temp("theme-lottery-bg-time.jpg", no-repeat, center);
+    & .frame {
+        .w(1100px); .h(211px);
+        .mg(0 auto);
+    }
+    & .time {
+        .w(360px);
+        .pd(140px 0 0 85px);
+        font: 400 16px/24px "Microsoft YaHei";
+        .c(#FFF);
+    }
+}
+.theme-lottery-body-prod {
+    .w(100%); .h(480px);
+    .bg-temp("theme-lottery-bg-prod.jpg", no-repeat, center);
+}
+.theme-lottery-body-process {
+    .w(100%); .h(255px);
+    .bg-temp("theme-lottery-bg-process.jpg", no-repeat, center);
+    & .frame {
+        .w(1055px); .h(255px);
+        .pl(45px); .mg(0 auto);
+    }
+    & .ok {
+        .fl();
+        .w(70px); .h(66px);
+        .mg(95px 65px 0);
+        .bg-temp("theme-lottery-ok.png", no-repeat, center);
+    }
+}
+
+.theme-lottery-wrap {
+    .w(1100px);
+    .mg(0 auto);
+    .bc(#BE073F);
+}
+
+.theme-lottery-head {
+    .w(100%); .h(44px);
+    .bg-temp("theme-lottery-head.png", no-repeat center);    
+    & .text {
+        overflow: hidden;
+        .w(152px); .h(44px);
+        .mg(0 auto);
+        .bg-temp("theme-lottery-head-text.png", no-repeat 0 0);
+        .ti(-9999px);
+    }
+    & .rule {
+        .bp(0 0);
+    }
+    & .question {
+        .bp(0 -44px);
+    }
+    & .lottery {
+        .bp(0 -88px);
+    }
+}
+
+.theme-lottery-footer {
+    .w(100%); .h(50px);
+    .bc(#000);
+    .lh(50px);
+    .tc();
+    .c(#999);
+    & span {
+        .ml(60px);
+    }
+}
+
+// rule
+
+.theme-lottery-rule {
+    .w(820px); .h(645px);
+    .pd(110px 70px 0); .mg(0 auto);
+    .bg-temp("theme-lottery-rule-paper.png", no-repeat 0 0);
+    & .title {
+        .w(145px); .h(34px);
+        .mg(10px 0);
+        .bg-temp("theme-lottery-rule-title.png", no-repeat 0 0);
+        font: 600 14px/34px "Microsoft YaHei";
+        .ti(40px);
+        .c(#FFF);
+    }
+    & p {
+        .pl(35px);
+        .lh(24px);
+        .fz(14px);
+    }
+    & .small {
+        .mt(30px);
+        .fz(12px);
+    }
+    & .important {
+        .fw(bold);
+        .c(#F00);
+    }
+}
+
+.theme-lottery-btn {
+    overflow: hidden;
+    .dis-b();
+    .w(216px); .h(59px);
+    .bg-temp("theme-lottery-button.png", no-repeat 0 0);
+    .bd-none();
+    .ti(-9999px);
+    .cur-p();
+}
+
+.theme-lottery-btn-join {
+    .mg(20px auto 125px);
+    .bp(0 0);
+    .w(216px); .h(59px);
+}
+
+// question
+
+.theme-lottery-question {
+    .w(945px); .h(1105px);
+    .pd(65px 75px 0 90px); .mg(0 auto 80px);
+    .bg-temp("theme-lottery-question-paper.png", no-repeat 0 0);
+    & .table {
+        .fl();
+        .w(680px);
+        .mt(45px);
+        & th {
+            .lh(35px);
+            .fz(14px);
+        }
+        & td {
+            .lh(30px);
+            .fz(14px);
+        }
+        & label {
+            .vm();
+        }
+        & label.parse-line {
+            .mr(25px);
+        }
+        & input[type="checkbox"],
+        & input[type="radio"] {
+            .mr(5px);
+            .vm();
+        }
+        & input[type="text"] {
+            .w(450px);
+            .bc(transparent);
+            .bd-none(); .bb(#000);
+        }
+        & textarea {
+            .w(550px); .h(120px);
+            .bc(#F3EDCE);
+            .bd(#9F662E);
+        }
+        & .line {
+            .fl();
+            .w(300px);
+        }
+        & .in-line {
+            .fl();
+            .w(165px);
+        }
+        & .clear-line {
+            clear: both;
+            .w(100%);
+        }
+        & span {
+            .c(red);
+        }
+        & em {
+            .c(#B25900);
+        }
+    }
+    & .rule {
+        .w(250px);
+        .fr();
+    }
+    & .title {
+        .w(145px); .h(34px);
+        .mg(10px 0);
+        .bg-temp("theme-lottery-rule-title.png", no-repeat 0 0);
+        font: 600 14px/34px "Microsoft YaHei";
+        .ti(40px);
+        .c(#FFF);
+    }
+    & p {
+        .pl(12px);
+        .lh(18px);
+    }
+    & .small {
+        .mt(30px);
+        .fz(12px);
+    }
+    & .prod {
+        .c(#C00);
+    }
+    & .important {
+        .fw(bold);
+        .c(#FFD400);
+    }
+    & .submit {
+        .w(162px); .h(50px);
+        .mg(30px 0 0 185px);
+        .bp(0 -60px);
+    }
+}
+
+// lottery
+.theme-lottery-lottery {
+    .w(945px); .h(400px);
+    .pd(65px 75px 0 90px); .mg(0 auto 90px);
+    .bg-temp("theme-lottery-lottery-paper.png", no-repeat 0 0);
+}
+
+// popup
+
+.theme-lottery-popup {
+    .w(390px);
+    .bd(#E48317,); .border-radius(0);
+    .box-shadow( none);
+    & a.popup-close {
+        .pos-a();
+        .w(22px); .h(22px);
+        .bg-temp("lottery-popup.png", no-repeat 0 -145px);
+        .transition(none);
+        &:hover {
+            .bp(0 -145px);
+        }
+    }
+    & .popup-tit {
+        .w(100%); .h(37px);
+        .pd(0);
+        .bg-none();
+        .bg-temp("lottery-popup.png", repeat-x 0 -105px);
+        font: 400 18px/37px "Microsoft YaHei";
+        .ti(12px);
+        .c(#FFF);
+    }
+    & .popup-con {
+        .w(335px);
+        .pd(0); .mg(30px auto);
+    }
+    & .popup-btn-wrap {
+        .w(390px); .h(50px);
+        .mg(0 auto);
+    }
+    & .popup-btn,
+    & .popup-btn-text {
+        .h(50px);
+        .bg-temp("lottery-popup.png", no-repeat);
+        .td-none();
+        .c(#FFF);
+    }
+    & .popup-btn {
+        overflow: hidden;
+        .w(160px);
+        .pd(0); .mg(0 10px);
+        .bp(right 0);
+        &:hover {
+            .bp(right 0);
+            & .popup-btn-text {
+                .bp(left 0);
+            }
+        }
+        &:active {
+            .bp(right 0);
+            outline: 0;
+            & .popup-btn-text {
+                .bp(left 0);
+            }
+        }
+        &-disabled {
+            .bp(right 0);
+            & .popup-btn-text {
+                .bp(left 0);
+            }
+            &:hover {
+                .bp(right 0);
+                & .popup-btn-text {
+                    .bp(left 0);
+                }
+            }
+            &:active {
+                .bp(right 0);
+                outline: 0;
+                & .popup-btn-text {
+                    .bp(left 0);
+                }
+            }
+        }
+    }
+    & .popup-btn-text {
+        .w(160px);
+        .pd(0); .mg(0);
+        .bp(left 0);
+        .vt();
+        .ti(-9999px);
+    }
+    & .popup-btn-wrap .cancel {
+        .bp(right -51px);
+        &:hover {
+            .bp(right -51px);
+            & .popup-btn-text {
+                .bp(left -51px);
+            }
+        }
+        &:active {
+            .bp(right -51px);
+            outline: -51px;
+            & .popup-btn-text {
+                .bp(left -51px);
+            }
+        }
+        & .popup-btn-text {
+            .bp(left -51px);
+            .c(#666);
+        }
+    }
+    & .confirm-msg{
+        font: 400 14px/22px "Microsoft YaHei";
+        // .pos-r(); top: -20px;
+        // .c(red);
+    }
+}
+
+
+
+
+
 .wrap {
     .w(1000px);
     .mg(100px auto);

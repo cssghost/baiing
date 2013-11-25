@@ -7,8 +7,10 @@ exports.index = function(req, res){
     res.render('index', { });
 };
 
-exports.view = function(req, res){
-    res.send('view');
+
+
+exports.question = function(req, res){
+    res.render('question', { });
 };
 
 exports.lottery = function(req, res){
@@ -31,11 +33,13 @@ exports.doLottery = function(req, res){
 }
 
 exports.canJoin = function(req, res){
+    var _cookieData = req.headers.cookie;
+    var thisCookie = new cookie(_cookieData);
     var result = {};
-    var url = ["view", "lottery"];
-    var prize = parseInt(Math.random()*(1-0+1)+0);
-    result.success = true;
-    result.url = url[prize];
+    var cookieScene = thisCookie.get('scene');
+    var sceneNum = cookieScene.split(",");
+    console.log(sceneNum);
+    result.success = sceneNum > 3 ? true : false;
     res.writeHead(200, { 'Content-Type': 'application/json'} );
     res.end( JSON.stringify( result ) );
 }

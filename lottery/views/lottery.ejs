@@ -12,6 +12,28 @@
     <script src="js/jquery.plugin.js"></script>
 </head>
 <body>
+
+    <div class="theme-lottery-body-time">
+        <div class="frame">
+            <p class="time">活动时间：2013年12月1日—2013年12月15日</p>
+        </div>
+    </div>
+    <div class="theme-lottery-body-prod"></div>
+    <div class="theme-lottery-body-process">
+        <div class="frame">
+            <img src="images/lib/i.gif" alt="" class="ok" />
+            <img src="images/lib/i.gif" alt="" class="ok" />
+            <img src="images/lib/i.gif" alt="" class="ok" />
+        </div>
+    </div>
+    <div class="theme-lottery-wrap">
+        <div class="theme-lottery-head">
+            <h1 class="text lottery"></h1>
+        </div>
+    </div>
+    <div class="theme-lottery-lottery"></div>
+    <div class="theme-lottery-footer">版权所有：湖南电信<span>技术支持：百应科技(北京)有限公司</span></div>
+
     <div class="wrap">
         <div class="lottery-result lottery-result-first">
             <div class="layer-left"></div>
@@ -25,25 +47,6 @@
         <input type="button" value="查找附近" class="Js-scene" data-scene="near" />
         <input type="button" value="出国服务" class="Js-scene" data-scene="abroad" />
     </div>
-
-<!-- JiaThis Button BEGIN -->
-<div class="jiathis_style_32x32">
-<a class="jiathis_button_tsina"></a>
-<a class="jiathis_button_weixin"></a>
-<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
-</div>
-<script type="text/javascript" >
-var jiathis_config={
-    url:"www.baidu.com",
-    summary:"test content",
-    title:"test title  ##",
-    shortUrl:false,
-    hideMore:true
-}
-</script>
-<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
-<!-- JiaThis Button END -->
-
 
 <script>
 $(function() {
@@ -100,12 +103,12 @@ $(function() {
         var $scene = $(this),
             strScene = $scene.data("scene"),
             cookieScene = $.cookie("scene"),
-            reg = new RegExp("###" + strScene, "gi");
+            reg = new RegExp("," + strScene, "gi");
         cookieScene = cookieScene ? cookieScene : "";
         if ( !cookieScene.match(reg) ) {
-            $.cookie("scene", cookieScene + "###" + strScene);
+            $.cookie("scene", cookieScene + "," + strScene);
         }
-        if( $.cookie("scene").split("###").length > 3 ){
+        if( $.cookie("scene").split(",").length > 3 ){
             popup.show();
         }
     });
