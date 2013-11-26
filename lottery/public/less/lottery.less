@@ -214,10 +214,61 @@ body {
 
 // lottery
 .theme-lottery-lottery {
-    .w(945px); .h(400px);
-    .pd(65px 75px 0 90px); .mg(0 auto 90px);
+    .pos-r();
+    .w(945px); .h(365px);
+    .pd(100px 75px 0 90px); .mg(0 auto 90px);
     .bg-temp("theme-lottery-lottery-paper.png", no-repeat 0 0);
 }
+.theme-lottery-prize-box {
+    .pos-a(); left: 50%;
+    .w(342px); .h(194px);
+    .pd(6px); .ml(-177px);
+    .bg-temp("theme-lottery-prize-bg.png", no-repeat 0 0);
+    & .prize-box {
+        overflow: hidden;
+        .pos-r();
+        .w(342px); .h(194px);
+    }
+    & img {
+        .w(342px); .h(194px);
+    }
+    & .prize-default {
+        .bg-temp("theme-lottery-prize-default.png", no-repeat 0 0);
+    }
+    & .prize-first {
+        .bg-temp("theme-lottery-prize-first.png", no-repeat 0 0);
+    }
+    & .prize-second {
+        .bg-temp("theme-lottery-prize-second.png", no-repeat 0 0);
+    }
+    & .prize-third {
+        .bg-temp("theme-lottery-prize-third.png", no-repeat 0 0);
+    }
+    & .prize-lucky {
+        .bg-temp("theme-lottery-prize-lucky.png", no-repeat 0 0);
+    }
+    & .prize-failed {
+        .bg-temp("theme-lottery-prize-failed.png", no-repeat 0 0);
+    }
+    & .hammer,
+    & .hammer-click {
+        .pos-a();
+        .dis-n();
+        .w(130px); .h(130px);
+        .bg-temp("theme-lottery-hammer.png", no-repeat 0 0);
+    }
+    & .hammer-click {
+        .dis-b();
+        .bp(0 -130px);
+    }
+    & .hammer-over {
+        .pos-a();
+        .dis-n();
+        .w(500px); .h(500px);
+        .bg-temp("theme-lottery-hammer-over.png", no-repeat 0 0);
+    }
+}
+
 
 // popup
 

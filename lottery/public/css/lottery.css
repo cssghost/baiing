@@ -219,11 +219,68 @@ body {
   background-position: 0 -60px;
 }
 .theme-lottery-lottery {
+  position: relative;
   width: 945px;
-  height: 400px;
-  padding: 65px 75px 0 90px;
+  height: 365px;
+  padding: 100px 75px 0 90px;
   margin: 0 auto 90px;
   background: url("../images/temp/theme-lottery-lottery-paper.png") no-repeat 0 0;
+}
+.theme-lottery-prize-box {
+  position: absolute;
+  left: 50%;
+  width: 342px;
+  height: 194px;
+  padding: 6px;
+  margin-left: -177px;
+  background: url("../images/temp/theme-lottery-prize-bg.png") no-repeat 0 0;
+}
+.theme-lottery-prize-box .prize-box {
+  overflow: hidden;
+  position: relative;
+  width: 342px;
+  height: 194px;
+}
+.theme-lottery-prize-box img {
+  width: 342px;
+  height: 194px;
+}
+.theme-lottery-prize-box .prize-default {
+  background: url("../images/temp/theme-lottery-prize-default.png") no-repeat 0 0;
+}
+.theme-lottery-prize-box .prize-first {
+  background: url("../images/temp/theme-lottery-prize-first.png") no-repeat 0 0;
+}
+.theme-lottery-prize-box .prize-second {
+  background: url("../images/temp/theme-lottery-prize-second.png") no-repeat 0 0;
+}
+.theme-lottery-prize-box .prize-third {
+  background: url("../images/temp/theme-lottery-prize-third.png") no-repeat 0 0;
+}
+.theme-lottery-prize-box .prize-lucky {
+  background: url("../images/temp/theme-lottery-prize-lucky.png") no-repeat 0 0;
+}
+.theme-lottery-prize-box .prize-failed {
+  background: url("../images/temp/theme-lottery-prize-failed.png") no-repeat 0 0;
+}
+.theme-lottery-prize-box .hammer,
+.theme-lottery-prize-box .hammer-click {
+  position: absolute;
+  display: none;
+  width: 130px;
+  height: 130px;
+  background: url("../images/temp/theme-lottery-hammer.png") no-repeat 0 0;
+}
+.theme-lottery-prize-box .hammer-click {
+  display: block;
+  background-position: 0 -130px;
+}
+.theme-lottery-prize-box .hammer-over {
+  position: absolute;
+  display: none;
+  width: 500px;
+  height: 500px;
+  background: url("../images/temp/theme-lottery-hammer-over.png") no-repeat 0 0;
 }
 .theme-lottery-popup {
   width: 390px;
