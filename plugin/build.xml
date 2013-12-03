@@ -30,6 +30,9 @@
         <copy todir="${demo.dir}/js/">
             <fileset dir="${libJs}" />
         </copy>
+        <copy todir="${demo.dir}/css/">
+            <fileset dir="${cssFolder}" />
+        </copy>
         <copy todir="${demo.dir}/">
             <fileset dir="" includes="*.html" />
         </copy>

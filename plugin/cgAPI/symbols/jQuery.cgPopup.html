@@ -1,0 +1,2084 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="generator" content="JsDoc Toolkit" />
+        
+        <title>jQuery.cgPopup</title>
+        <style>
+            /*************************************************************************************
+ * Reset
+ *************************************************************************************/
+
+/** 清除内外边距 **/
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, /* structural elements 结构元素 */
+dl, dt, dd, ul, ol, li, /* list elements 列表元素 */
+pre, /* text formatting elements 文本格式元素 */
+form, fieldset, legend, button, input, textarea, /* form elements 表单元素 */
+th, td /* table elements 表格元素 */ {
+    margin: 0;
+    padding: 0;
+}
+
+/** 设置默认字体 **/
+body,
+button, input, select, textarea /* for ie */ {
+    font: 14px/1.5 Microsoft YaHei, tahoma, arial, \5b8b\4f53, sans-serif;
+}
+h1, h2, h3, h4, h5, h6 { font-size: 100%; }
+address, cite, dfn, em, var { font-style: normal; } /* 将斜体扶正 */
+code, kbd, pre, samp { font-family: courier new, courier, monospace; } /* 统一等宽字体 */
+small { font-size: 12px; } /* 小于 12px 的中文很难阅读，让 small 正常化 */
+
+/** 重置列表元素 **/
+ul, ol { list-style: none; }
+
+/** 重置文本格式元素 **/
+
+sup { vertical-align: text-top; } /* 重置，减少对行高的影响 */
+sub { vertical-align: text-bottom; }
+
+/** 重置表单元素 **/
+legend { color: #000; } /* for ie6 */
+fieldset, img { border: 0; } /* img 搭车：让链接里的 img 无边框 */
+button, input, select, textarea { font-size: 100%; } /* 使得表单元素在 ie 下能继承字体大小 */
+/* 注：optgroup 无法扶正 */
+
+/** 重置表格元素 **/
+table { border-collapse: collapse; border-spacing: 0; }
+
+/*************************************************************************************
+ * Layout
+ *************************************************************************************/
+
+/* 居中 */
+#content{
+    margin:0 10px;
+}
+
+/** 布局基础样式 **/
+.col-main {
+    float: left;
+    width: 100%;
+    /* bug fix: 主栏没有内容时，在 Firefox 和 Chrome 等浏览器下，布局不对 */
+    min-height: 1px;
+}
+.col-sub, .col-extra {
+    float: left;
+    /*position: relative;  按需设置，仅在需要时添加 */
+}
+
+/** 清除浮动 **/
+.layout:after, .main-wrap:after, .col-sub:after, .col-extra:after {
+    content: '\20';
+    display: block;
+    height: 0;
+    clear: both;
+}
+.layout, .main-wrap, .col-sub, .col-extra {
+    *zoom: 1;
+}
+
+/** 两栏布局 **/
+.layout .main-wrap { margin-left: 220px; }
+.layout .col-sub { width: 200px; margin-left: -100%; }
+
+/*************************************************************************************
+ * JSDoc
+ * gray:444, blue:06f, green:0c9, red:930
+ *************************************************************************************/
+
+/* reset for jsDoc */
+body{color:#444;}
+a{color: #06f;}
+h1,h2,h3{margin-bottom:10px;padding:8px 0;font:18px tahoma, "Microsoft YaHei", sans-serif;;}
+h1{font-size:28px;}
+dt{margin-bottom:5px;font-weight:bold;}
+dd{margin-bottom:10px;padding-left:30px;font-size:12px;}
+hr{margin:10px 0;height:0;overflow:hidden;border:none;border-top:1px dotted #ccc;}
+
+#header{margin:0 10px;border-bottom: 1px solid #a4d3f2;}
+.col-sub{border: 1px solid #a4d3f2;border-top:none;background:#f2f8fa;}
+#footer{margin-top:10px;padding:10px 10px 30px 10px;text-align:center;color:#666;border-top:1px solid #ddd;}
+
+.box{margin-bottom:10px;}
+.box-hd h3{margin-top:15px;font-size:18px;color:#404040;margin-bottom:0;}
+.box-bd{padding-left:20px;}
+
+.col-sub .box{margin:0 10px 10px 10px;}
+
+.class-title{color:#0c9;}
+.summary-box{color:#666;font-size:12px;}
+.param-list .name{color:#362e2b;}
+.code{margin-top:10px;padding:6px 10px;border-left:3px solid #0c9;background:#edfae5;}
+.attr,
+.desc{color:#666;font-size:14px;}
+.name{color:#930;}
+
+.detail-list li{padding-bottom:5px;margin-bottom:10px;border-bottom:1px dotted #ccc;}
+.detail-list li li{padding-bottom:0;margin-bottom:0;border-bottom:none;}
+.detail-list div.desc{margin-bottom:10px;}
+
+.detail-list li .view-source{display:none;_display:inline;}
+.detail-list li:hover .view-source{display:inline;font-size:14px;}
+
+.go-top{position:fixed;width:24px;height:24px;bottom:0;right:10px;line-height:24px;text-align:center;color:#fff;font-size:14px;font-weight:bold;background:#06f;
+    -moz-border-radius: 2px;
+    -khtml-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+}
+a.go-top:hover,
+a.go-top:active{text-decoration:none;}
+
+
+#header, #content, #footer {
+    margin: 0 10px;
+}
+#footer {
+    border-top: 1px solid #DFDFDF;
+    margin: 20px 0 10px;
+    padding-top: 10px;
+    text-align: center;
+}
+#header {
+    height: 100px;
+}
+#header .logo {
+    border: medium none;
+    float: left;
+    margin: 20px 0 0;
+    padding: 0;
+}
+#header .sub-title {
+    color: #AAAAAA;
+    float: left;
+    font: 25px "Microsoft YaHei";
+    margin: 45px 5px 0;
+}
+#header .desc {
+    color: #80C269;
+    float: left;
+    font-family: "Microsoft YaHei";
+    font-size: 15px;
+    font-weight: bold;
+    margin-left: 5px;
+    margin-top: 55px;
+}
+#header .navigation {
+    float: right;
+    list-style: none outside none;
+    margin: 55px 0 0;
+    overflow: hidden;
+}
+#header .navigation li {
+    border-left: 1px solid #DDDDDD;
+    float: left;
+    line-height: 1em;
+    margin-left: -1px;
+    padding: 0 10px 0 25px;
+}
+a{
+    color:#00A0E9;
+    text-decoration: none;
+}
+a:link, a:visited {
+    color:#00A0E9;
+}
+a:hover {
+    color: #3366CC;
+    text-decoration: underline;
+}
+.class-list li{
+    margin-top:6px;
+}
+dl.data{
+    border-bottom: 1px dotted #CCCCCC;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+}
+dl.data  tt {
+    font-family: arial;
+}
+dl.data tt.descclassname, tt.descname {
+    color: #9F2A2A;
+}
+dl.data .dd{
+    color:#404040;
+}
+.type{
+    color:#888888;
+}
+.detail-list  dt{
+    color: #444444;
+    border-left: 3px solid #A4D3F2;
+    padding-left: 6px;
+}
+.detail-list  dl{
+    margin-left:15px;
+}
+.list{
+    line-height: 28px;
+}
+.member-data {
+    border-left: 3px solid #A4D3F2;
+    padding-left: 10px;
+    color:#404040;
+    margin-left:15px;
+    margin-bottom:10px;
+}
+.member-data span{
+    color: #444444;
+    font-weight: bold;
+}
+.constructor-box p{
+    line-height: 24px;
+}
+.static-list li{
+    border-bottom: 1px dashed #CCCCCC;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+        </style>
+    </head>
+
+    <body>
+        <div id="page">
+        
+            <div id="header">
+    <h1 class="logo"></h1>
+    <p class="sub-title">cgClass —API文档</p>
+    <ul class="navigation">
+        <li><a href="https://www.github.com/">github</a></li>
+    </ul>
+</div>
+
+            <div id="content">
+                <div class="layout">
+                    <div class="col-main">
+                        <div class="main-wrap">
+                            
+                            <!-- contructor START -->
+                            <div class="box constructor-box">
+                                <div class="box-hd">
+                                    
+                                    <h3><b class="name"><a href="../symbols/jQuery.cgPopup.html#constructor">jQuery.cgPopup</a></b>
+                                        <span class="param">(options)</span>
+                                        
+                                        
+                                        
+                                    </h3>
+                                    
+                                </div>
+                                <div class="box-bd">
+                                    
+                                        <p class="desc">描述：弹出框 <a href="../demo/popup.html" target="_blank">demo</a></p>
+                                    
+
+                                    
+
+                                    
+                                        <p>继承自：
+                                            Modernizr, jQuery
+                                        </p>
+                                    
+
+                                    
+
+                                    
+                                        <p>源码：
+                                            <a href="../symbols/src/_Users_Mac_git_baiing_plugin_js_plugin_jquery.plugin.popup.js.html">jquery.plugin.popup.js</a></p>
+
+                                    
+
+                                    <p>作者：徐晨</p>
+                                </div>
+                            </div>
+                            <!-- constructor END -->
+                            
+                            <!-- properties START -->
+                            
+                                
+                                
+                                <div class="box properties-box">
+                                    <div class="box-hd">
+                                        <h3>Config Attributes（Properties）- 使用get和set方法获取/设置属性</h3>
+                                    </div>
+                                    <div class="box-bd">
+                                        <ul class="list summary-list">
+                                            
+                                                
+                                                    <li class="li">
+                                                        <b class="name"><a href="../symbols/jQuery.cgPopup.html#addClass">addClass</a></b>
+                                                        <span class="type">{css class}</span>
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        <span class="desc">附加弹出框样式</span>
+                                                    </li>
+                                                
+                                            
+                                                
+                                                    <li class="li">
+                                                        <b class="name"><a href="../symbols/jQuery.cgPopup.html#append">append</a></b>
+                                                        <span class="type">{Object}</span>
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        <span class="desc">以添加的方式初始化弹出框 isAppend: 是否以添加的方式初始化弹出框; dom: 包裹对象</span>
+                                                    </li>
+                                                
+                                            
+                                                
+                                                    <li class="li">
+                                                        <b class="name"><a href="../symbols/jQuery.cgPopup.html#autoShow">autoShow</a></b>
+                                                        <span class="type">{Boolean}</span>
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        <span class="desc">是否在初始化时自动显示</span>
+                                                    </li>
+                                                
+                                            
+                                                
+                                                    <li class="li">
+                                                        <b class="name"><a href="../symbols/jQuery.cgPopup.html#cancel">cancel</a></b>
+                                                        <span class="type">{Function}</span>
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        <span class="desc">取消按钮附加函数</span>
+                                                    </li>
+                                                
+                                            
+                                                
+                                                    <li class="li">
+                                                        <b class="name"><a href="../symbols/jQuery.cgPopup.html#cancelText">cancelText</a></b>
+                                                        <span class="type">{String}</span>
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        <span class="desc">取消按钮的文字</span>
+                                                    </li>
+                                                
+                                            
+                                                
+                                                    <li class="li">
+                                                        <b class="name"><a href="../symbols/jQuery.cgPopup.html#content">content</a></b>
+                                                        <span class="type">{Function}</span>
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        <span class="desc">内容区的附加函数</span>
+                                                    </li>
+                                                
+                                            
+                                                
+                                                    <li class="li">
+                                                        <b class="name"><a href="../symbols/jQuery.cgPopup.html#done">done</a></b>
+                                                        <span class="type">{Function}</span>
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        <span class="desc">确定按钮附加函数</span>
+                                                    </li>
+                                                
+                                            
+                                                
+                                                    <li class="li">
+                                                        <b class="name"><a href="../symbols/jQuery.cgPopup.html#doneText">doneText</a></b>
+                                                        <span class="type">{String}</span>
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        <span class="desc">确定按钮的文字</span>
+                                                    </li>
+                                                
+                                            
+                                                
+                                                    <li class="li">
+                                                        <b class="name"><a href="../symbols/jQuery.cgPopup.html#hasBtn">hasBtn</a></b>
+                                                        <span class="type">{Boolean}</span>
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        <span class="desc">是否需要按钮</span>
+                                                    </li>
+                                                
+                                            
+                                                
+                                                    <li class="li">
+                                                        <b class="name"><a href="../symbols/jQuery.cgPopup.html#hasCancel">hasCancel</a></b>
+                                                        <span class="type">{Boolean}</span>
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        <span class="desc">是否需要取消按钮</span>
+                                                    </li>
+                                                
+                                            
+                                                
+                                                    <li class="li">
+                                                        <b class="name"><a href="../symbols/jQuery.cgPopup.html#isCenter">isCenter</a></b>
+                                                        <span class="type">{Boolean}</span>
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        <span class="desc">是否居中</span>
+                                                    </li>
+                                                
+                                            
+                                                
+                                                    <li class="li">
+                                                        <b class="name"><a href="../symbols/jQuery.cgPopup.html#isDrag">isDrag</a></b>
+                                                        <span class="type">{Boolean}</span>
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        <span class="desc">是否唯一</span>
+                                                    </li>
+                                                
+                                            
+                                                
+                                                    <li class="li">
+                                                        <b class="name"><a href="../symbols/jQuery.cgPopup.html#isLayer">isLayer</a></b>
+                                                        <span class="type">{Boolean}</span>
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        <span class="desc">是否需要遮罩层</span>
+                                                    </li>
+                                                
+                                            
+                                                
+                                                    <li class="li">
+                                                        <b class="name"><a href="../symbols/jQuery.cgPopup.html#isOnly">isOnly</a></b>
+                                                        <span class="type">{Boolean}</span>
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        <span class="desc">是否唯一</span>
+                                                    </li>
+                                                
+                                            
+                                                
+                                                    <li class="li">
+                                                        <b class="name"><a href="../symbols/jQuery.cgPopup.html#message">message</a></b>
+                                                        <span class="type">{String}</span>
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        <span class="desc">弹出框为展示文本类型时显示的消息提示文本</span>
+                                                    </li>
+                                                
+                                            
+                                                
+                                                    <li class="li">
+                                                        <b class="name"><a href="../symbols/jQuery.cgPopup.html#param">param</a></b>
+                                                        <span class="type">{Object}</span>
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        <span class="desc">附加参数</span>
+                                                    </li>
+                                                
+                                            
+                                                
+                                                    <li class="li">
+                                                        <b class="name"><a href="../symbols/jQuery.cgPopup.html#popupTemp">popupTemp</a></b>
+                                                        <span class="type">{jQuery Dom}</span>
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        <span class="desc">弹出框html的jQuery对象</span>
+                                                    </li>
+                                                
+                                            
+                                                
+                                                    <li class="li">
+                                                        <b class="name"><a href="../symbols/jQuery.cgPopup.html#template">template</a></b>
+                                                        <span class="type">{html String}</span>
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        <span class="desc">内容区的html代码片段</span>
+                                                    </li>
+                                                
+                                            
+                                                
+                                                    <li class="li">
+                                                        <b class="name"><a href="../symbols/jQuery.cgPopup.html#time">time</a></b>
+                                                        <span class="type">{Number}</span>
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        <span class="desc">如果type = result 自动消失时间</span>
+                                                    </li>
+                                                
+                                            
+                                                
+                                                    <li class="li">
+                                                        <b class="name"><a href="../symbols/jQuery.cgPopup.html#title">title</a></b>
+                                                        <span class="type">{String}</span>
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        <span class="desc">弹出框的标题</span>
+                                                    </li>
+                                                
+                                            
+                                                
+                                                    <li class="li">
+                                                        <b class="name"><a href="../symbols/jQuery.cgPopup.html#type">type</a></b>
+                                                        <span class="type">{String}</span>
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        <span class="desc">弹出框的种类</span>
+                                                    </li>
+                                                
+                                            
+                                        </ul>
+                                        
+                                    </div>
+                                </div>
+                                                    
+                            
+                            
+                                
+                                
+                                    <div class="box properties-box">
+                                        <div class="box-hd">
+                                            <h3>Static Properties</h3>
+                                        </div>
+                                        <div class="box-bd">
+                                            <ul class="static-list">
+                                            
+                                                
+                                            
+                                                
+                                            
+                                                
+                                            
+                                                
+                                            
+                                                
+                                            
+                                                
+                                            
+                                                
+                                            
+                                                
+                                            
+                                                
+                                            
+                                                
+                                            
+                                                
+                                            
+                                                
+                                            
+                                                
+                                            
+                                                
+                                            
+                                                
+                                            
+                                                
+                                            
+                                                
+                                            
+                                                
+                                            
+                                                
+                                            
+                                                
+                                            
+                                                
+                                            
+                                            </ul>
+                                        </div>
+                                     </div>
+                                
+                            
+                            <!-- properties END -->
+                            
+                            <!-- methods START -->
+                            
+                            <!-- methods END -->
+                            
+                            <!-- events START -->
+                            
+                                
+                                
+                                <div class="box events-box">
+                                    <div class="box-hd">
+                                        <h3>Events</h3>
+                                    </div>
+                                    <div class="box-bd">
+                                        <ul class="list summary-list">
+                                            
+                                            <li class="li">
+                                                
+                                                <b class="name"><a href="../symbols/jQuery.cgPopup.html#event:bindDrag">bindDrag</a></b>
+                                                <span class="param">()</span>
+                                                
+                                                
+                                                
+                                                <span class="desc">绑定拖拽事件</span>
+                                            </li>
+                                            
+                                            <li class="li">
+                                                
+                                                <b class="name"><a href="../symbols/jQuery.cgPopup.html#event:close">close</a></b>
+                                                <span class="param">(callback)</span>
+                                                
+                                                
+                                                
+                                                <span class="desc">关闭弹出框</span>
+                                            </li>
+                                            
+                                            <li class="li">
+                                                
+                                                <b class="name"><a href="../symbols/jQuery.cgPopup.html#event:disableBtn">disableBtn</a></b>
+                                                <span class="param">(isReset)</span>
+                                                
+                                                
+                                                
+                                                <span class="desc">改变确定按钮状态</span>
+                                            </li>
+                                            
+                                            <li class="li">
+                                                
+                                                <b class="name"><a href="../symbols/jQuery.cgPopup.html#event:hide">hide</a></b>
+                                                <span class="param">(callback)</span>
+                                                
+                                                
+                                                
+                                                <span class="desc">隐藏弹出框</span>
+                                            </li>
+                                            
+                                            <li class="li">
+                                                
+                                                <b class="name"><a href="../symbols/jQuery.cgPopup.html#event:positionCenter">positionCenter</a></b>
+                                                <span class="param">()</span>
+                                                
+                                                
+                                                
+                                                <span class="desc">使弹出框居中</span>
+                                            </li>
+                                            
+                                            <li class="li">
+                                                
+                                                <b class="name"><a href="../symbols/jQuery.cgPopup.html#event:removeTip">removeTip</a></b>
+                                                <span class="param">()</span>
+                                                
+                                                
+                                                
+                                                <span class="desc">隐藏错误信息</span>
+                                            </li>
+                                            
+                                            <li class="li">
+                                                
+                                                <b class="name"><a href="../symbols/jQuery.cgPopup.html#event:reset">reset</a></b>
+                                                <span class="param">(newHtml)</span>
+                                                
+                                                
+                                                
+                                                <span class="desc">重置内容区内容</span>
+                                            </li>
+                                            
+                                            <li class="li">
+                                                
+                                                <b class="name"><a href="../symbols/jQuery.cgPopup.html#event:show">show</a></b>
+                                                <span class="param">(callback)</span>
+                                                
+                                                
+                                                
+                                                <span class="desc">显示弹出框</span>
+                                            </li>
+                                            
+                                            <li class="li">
+                                                
+                                                <b class="name"><a href="../symbols/jQuery.cgPopup.html#event:showTip">showTip</a></b>
+                                                <span class="param">(str)</span>
+                                                
+                                                
+                                                
+                                                <span class="desc">显示错误信息</span>
+                                            </li>
+                                            
+                                        </ul>
+                                        
+                                    </div>
+                                </div>
+                                
+                            
+                            <!-- events END -->
+
+                            <!-- constructor details START-->
+                            
+                            <div class="detail-box">
+                                <a name="constructor"></a>
+                                <div class="box-hd">
+                                    <h3>Class Detail</h3>
+                                </div>
+                                <div class="box-bd">
+                                    <ul class="list detail-list">
+                                        <li class="li">
+                                            <div class="title">
+                                                <b class="name">jQuery.cgPopup</b>
+                                                <span class="param">(options)</span>
+                                            </div>
+                                            
+                                            <div class="desc">弹出框 <a href="../demo/popup.html" target="_blank">demo</a></div>
+                                            
+                                            <dl>                                                
+                                                
+                                                
+                                                
+                                                <dt>参数：</dt>
+                                                <dd>
+                                                    <ul class="list param-list">
+                                                        
+                                                        <li class="li">
+                                                            &nbsp;
+                                                                <b>options</b>
+                                                            
+                                                            
+                                                            <span class="type"><span class="light fixedFont">{Object}</span> </span>
+                                                            <span class="desc">参数对象数据</span>
+                                                        </li>
+                                                        
+                                                        <li class="li">
+                                                            &nbsp;
+                                                                <b>options.type</b>
+                                                            
+                                                            
+                                                            <span class="type"><span class="light fixedFont">{String}</span> </span>
+                                                            <span class="desc">弹出框的种类</span>
+                                                        </li>
+                                                        
+                                                        <li class="li">
+                                                            &nbsp;
+                                                                <b>options.param</b>
+                                                            
+                                                            
+                                                            <span class="type"><span class="light fixedFont">{Object}</span> </span>
+                                                            <span class="desc">附加参数</span>
+                                                        </li>
+                                                        
+                                                        <li class="li">
+                                                            &nbsp;
+                                                                <b>options.title</b>
+                                                            
+                                                            
+                                                            <span class="type"><span class="light fixedFont">{String}</span> </span>
+                                                            <span class="desc">弹出框的标题</span>
+                                                        </li>
+                                                        
+                                                        <li class="li">
+                                                            &nbsp;
+                                                                <b>options.popupTemp</b>
+                                                            
+                                                            
+                                                            <span class="type"><span class="light fixedFont">{jQuery Object}</span> </span>
+                                                            <span class="desc">弹出框html的jQuery对象</span>
+                                                        </li>
+                                                        
+                                                        <li class="li">
+                                                            &nbsp;
+                                                                <b>options.template</b>
+                                                            
+                                                            
+                                                            <span class="type"><span class="light fixedFont">{html}</span> </span>
+                                                            <span class="desc">内容区的html代码片段</span>
+                                                        </li>
+                                                        
+                                                        <li class="li">
+                                                            &nbsp;
+                                                                <b>options.message</b>
+                                                            
+                                                            
+                                                            <span class="type"><span class="light fixedFont">{String}</span> </span>
+                                                            <span class="desc">type为confirm时显示的消息提示文本</span>
+                                                        </li>
+                                                        
+                                                        <li class="li">
+                                                            &nbsp;
+                                                                <b>options.addClass</b>
+                                                            
+                                                            
+                                                            <span class="type"><span class="light fixedFont">{css class}</span> </span>
+                                                            <span class="desc">附加弹出框样式</span>
+                                                        </li>
+                                                        
+                                                        <li class="li">
+                                                            &nbsp;
+                                                                <b>options.isLayer</b>
+                                                            
+                                                            
+                                                            <span class="type"><span class="light fixedFont">{Boolean}</span> </span>
+                                                            <span class="desc">是否需要遮罩层</span>
+                                                        </li>
+                                                        
+                                                        <li class="li">
+                                                            &nbsp;
+                                                                <b>options.isCenter</b>
+                                                            
+                                                            
+                                                            <span class="type"><span class="light fixedFont">{Boolean}</span> </span>
+                                                            <span class="desc">是否居中</span>
+                                                        </li>
+                                                        
+                                                        <li class="li">
+                                                            &nbsp;
+                                                                <b>options.isDrag</b>
+                                                            
+                                                            
+                                                            <span class="type"><span class="light fixedFont">{Boolean}</span> </span>
+                                                            <span class="desc">是否可拖拽</span>
+                                                        </li>
+                                                        
+                                                        <li class="li">
+                                                            &nbsp;
+                                                                <b>options.isOnly</b>
+                                                            
+                                                            
+                                                            <span class="type"><span class="light fixedFont">{Boolean}</span> </span>
+                                                            <span class="desc">是否为唯一</span>
+                                                        </li>
+                                                        
+                                                        <li class="li">
+                                                            &nbsp;
+                                                                <b>options.autoShow</b>
+                                                            
+                                                            
+                                                            <span class="type"><span class="light fixedFont">{Boolean}</span> </span>
+                                                            <span class="desc">是否在初始化时自动显示弹出框</span>
+                                                        </li>
+                                                        
+                                                        <li class="li">
+                                                            &nbsp;
+                                                                <b>options.append</b>
+                                                            
+                                                            
+                                                            <span class="type"><span class="light fixedFont">{Object}</span> </span>
+                                                            <span class="desc">是否在目标对象中加载</span>
+                                                        </li>
+                                                        
+                                                        <li class="li">
+                                                            &nbsp;
+                                                                <b>options.append.isAppend</b>
+                                                            
+                                                            
+                                                            <span class="type"><span class="light fixedFont">{Boolean}</span> </span>
+                                                            <span class="desc">是否在目标对象中加载</span>
+                                                        </li>
+                                                        
+                                                        <li class="li">
+                                                            &nbsp;
+                                                                <b>options.append.dom</b>
+                                                            
+                                                            
+                                                            <span class="type"><span class="light fixedFont">{jQuery Object}</span> </span>
+                                                            <span class="desc">目标对象的jquery dom</span>
+                                                        </li>
+                                                        
+                                                        <li class="li">
+                                                            &nbsp;
+                                                                <b>options.hasBtn</b>
+                                                            
+                                                            
+                                                            <span class="type"><span class="light fixedFont">{Boolean}</span> </span>
+                                                            <span class="desc">是否需要按钮</span>
+                                                        </li>
+                                                        
+                                                        <li class="li">
+                                                            &nbsp;
+                                                                <b>options.hasCancel</b>
+                                                            
+                                                            
+                                                            <span class="type"><span class="light fixedFont">{Boolean}</span> </span>
+                                                            <span class="desc">是否需要取消按钮</span>
+                                                        </li>
+                                                        
+                                                        <li class="li">
+                                                            &nbsp;
+                                                                <b>options.content</b>
+                                                            
+                                                            
+                                                            <span class="type"><span class="light fixedFont">{Function}</span> </span>
+                                                            <span class="desc">内容区的附加函数</span>
+                                                        </li>
+                                                        
+                                                        <li class="li">
+                                                            &nbsp;
+                                                                <b>options.done</b>
+                                                            
+                                                            
+                                                            <span class="type"><span class="light fixedFont">{Function}</span> </span>
+                                                            <span class="desc">确定按钮的附加函数</span>
+                                                        </li>
+                                                        
+                                                        <li class="li">
+                                                            &nbsp;
+                                                                <b>options.cancel</b>
+                                                            
+                                                            
+                                                            <span class="type"><span class="light fixedFont">{Function}</span> </span>
+                                                            <span class="desc">取消按钮的附加函数</span>
+                                                        </li>
+                                                        
+                                                    </ul>
+                                                </dd>
+                                                
+                                                
+                                                
+
+                                                
+                                                <dt>Since</dt>
+                                                <dd>version 1.0</dd>
+                                                
+                                                
+
+                                                
+                                                
+                                                
+                                                
+                                                <dt>示例：</dt>
+                                                <dd>
+                                                    
+                                                    <pre class='brush: js;'>$.cgPopup(
+    {
+        type : "popup",
+  [可选]param : {},
+  [可选]title : "弹出框",
+  [可选]popupTemp : null || $('<div class="module-popup fn-clear Js-popup-wrap">'+
+                    '<a href="javascript:void(0)" class="popup-close Js-popup-close"></a> '+
+                    '<h6 class="fn-clear popup-tit Js-popup-title">' + option.title + '</h6>'+
+                    '<div class="popup-con Js-popup-con"></div>'+
+                    '<div class="popup-btn-wrap Js-popup-btn-wrap">'+
+                        '<a class="popup-btn Js-popup-done" href="javascript:;;"><span class="popup-btn-text">确认</span></a>'+
+                        '<a class="popup-btn Js-popup-cancel" href="javascript:;;"><span class="popup-btn-text">取消</span></a>'+
+                    '</div>'+
+                '</div>'),
+        template : "<div></div>",
+  [可选]addClass : "popupClass",
+  [可选]isLayer : true,
+  [可选]isCenter : true,
+  [可选]isDrag : true,
+  [可选]isOnly : false,
+  [可选]autoShow : true,
+  [可选]append : {
+            isAppend : false,
+            dom : $(".dom")
+        },
+  [可选]hasBtn : true,
+  [可选]hasCancel : true,
+  [可选]content : null || function(opt){},
+  [可选]done : null || function(opt){},
+  [可选]cancel : null || function(opt){}
+    }
+); 
+oPopup.Events();</pre>
+                                                    
+                                                    <pre class='brush: js;'>$.cgPopup(
+    {
+        type: "confirm",
+  [可选]param : {},
+  [可选]title: "提示",
+  [可选]doneText : "确定按钮",
+  [可选]cancelText : "确定按钮",
+        message : "测试弹出框",
+  [可选]done : function(opt){},
+  [可选]cancel : function(opt){}
+    }
+);</pre>
+                                                    
+                                                    <pre class='brush: js;'>$.cgPopup(
+    {
+        type: "result",
+  [可选]param : {},
+  [可选]title: "提示",
+  [可选]doneText : "确定按钮",
+        message : "测试弹出框",
+  [可选]time : 2000,
+  [可选]content : function(opt){},
+  [可选]done : function(opt){}
+    }
+);</pre>
+                                                    
+                                                </dd>                                                
+                                                
+                                            </dl>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <!-- constructor details START-->
+
+                            <!-- properties details START -->
+                            
+                            <div class="box">
+                                <div class="box-hd">
+                                    <h3>Properties Detail</h3>
+                                </div>
+                                <div class="box-bd">
+                                    <ul class="list detail-list">
+                                    
+                                    
+                                        <li class="li">
+                                            <a name="addClass"> </a>
+                                            <div class="title">                                                
+                                                <b class="name">addClass</b>
+                                                <span class="type">{css class}</span> 
+                                                
+                                                
+                                                
+                                                
+                                                <span class="desc">
+                                                    — 附加弹出框样式
+                                                    
+                                                    
+                                                </span>
+                                            </div>
+                                            <!--
+                                            -->
+                                            
+                                                <div class="member-data"><span>默认值：</span>""</div>
+                                            
+                                            
+                                            
+                                        </li>
+                                    
+                                    
+                                    
+                                        <li class="li">
+                                            <a name="append"> </a>
+                                            <div class="title">                                                
+                                                <b class="name">append</b>
+                                                <span class="type">{Object}</span> 
+                                                
+                                                
+                                                
+                                                
+                                                <span class="desc">
+                                                    — 以添加的方式初始化弹出框 isAppend: 是否以添加的方式初始化弹出框; dom: 包裹对象
+                                                    
+                                                    
+                                                </span>
+                                            </div>
+                                            <!--
+                                            -->
+                                            
+                                                <div class="member-data"><span>默认值：</span>isAppend : false, dom : $(".dom")</div>
+                                            
+                                            
+                                            
+                                        </li>
+                                    
+                                    
+                                    
+                                        <li class="li">
+                                            <a name="autoShow"> </a>
+                                            <div class="title">                                                
+                                                <b class="name">autoShow</b>
+                                                <span class="type">{Boolean}</span> 
+                                                
+                                                
+                                                
+                                                
+                                                <span class="desc">
+                                                    — 是否在初始化时自动显示
+                                                    
+                                                    
+                                                </span>
+                                            </div>
+                                            <!--
+                                            -->
+                                            
+                                                <div class="member-data"><span>默认值：</span>true</div>
+                                            
+                                            
+                                            
+                                        </li>
+                                    
+                                    
+                                    
+                                        <li class="li">
+                                            <a name="cancel"> </a>
+                                            <div class="title">                                                
+                                                <b class="name">cancel</b>
+                                                <span class="type">{Function}</span> 
+                                                
+                                                
+                                                
+                                                
+                                                <span class="desc">
+                                                    — 取消按钮附加函数
+                                                    
+                                                    
+                                                </span>
+                                            </div>
+                                            <!--
+                                            -->
+                                            
+                                                <div class="member-data"><span>默认值：</span>null</div>
+                                            
+                                            
+                                            
+                                        </li>
+                                    
+                                    
+                                    
+                                        <li class="li">
+                                            <a name="cancelText"> </a>
+                                            <div class="title">                                                
+                                                <b class="name">cancelText</b>
+                                                <span class="type">{String}</span> 
+                                                
+                                                
+                                                
+                                                
+                                                <span class="desc">
+                                                    — 取消按钮的文字
+                                                    
+                                                    
+                                                </span>
+                                            </div>
+                                            <!--
+                                            -->
+                                            
+                                                <div class="member-data"><span>默认值：</span>"取消"</div>
+                                            
+                                            
+                                            
+                                        </li>
+                                    
+                                    
+                                    
+                                        <li class="li">
+                                            <a name="content"> </a>
+                                            <div class="title">                                                
+                                                <b class="name">content</b>
+                                                <span class="type">{Function}</span> 
+                                                
+                                                
+                                                
+                                                
+                                                <span class="desc">
+                                                    — 内容区的附加函数
+                                                    
+                                                    
+                                                </span>
+                                            </div>
+                                            <!--
+                                            -->
+                                            
+                                                <div class="member-data"><span>默认值：</span>null</div>
+                                            
+                                            
+                                            
+                                        </li>
+                                    
+                                    
+                                    
+                                        <li class="li">
+                                            <a name="done"> </a>
+                                            <div class="title">                                                
+                                                <b class="name">done</b>
+                                                <span class="type">{Function}</span> 
+                                                
+                                                
+                                                
+                                                
+                                                <span class="desc">
+                                                    — 确定按钮附加函数
+                                                    
+                                                    
+                                                </span>
+                                            </div>
+                                            <!--
+                                            -->
+                                            
+                                                <div class="member-data"><span>默认值：</span>null</div>
+                                            
+                                            
+                                            
+                                        </li>
+                                    
+                                    
+                                    
+                                        <li class="li">
+                                            <a name="doneText"> </a>
+                                            <div class="title">                                                
+                                                <b class="name">doneText</b>
+                                                <span class="type">{String}</span> 
+                                                
+                                                
+                                                
+                                                
+                                                <span class="desc">
+                                                    — 确定按钮的文字
+                                                    
+                                                    
+                                                </span>
+                                            </div>
+                                            <!--
+                                            -->
+                                            
+                                                <div class="member-data"><span>默认值：</span>"确定"</div>
+                                            
+                                            
+                                            
+                                        </li>
+                                    
+                                    
+                                    
+                                        <li class="li">
+                                            <a name="hasBtn"> </a>
+                                            <div class="title">                                                
+                                                <b class="name">hasBtn</b>
+                                                <span class="type">{Boolean}</span> 
+                                                
+                                                
+                                                
+                                                
+                                                <span class="desc">
+                                                    — 是否需要按钮
+                                                    
+                                                    
+                                                </span>
+                                            </div>
+                                            <!--
+                                            -->
+                                            
+                                                <div class="member-data"><span>默认值：</span>true</div>
+                                            
+                                            
+                                            
+                                        </li>
+                                    
+                                    
+                                    
+                                        <li class="li">
+                                            <a name="hasCancel"> </a>
+                                            <div class="title">                                                
+                                                <b class="name">hasCancel</b>
+                                                <span class="type">{Boolean}</span> 
+                                                
+                                                
+                                                
+                                                
+                                                <span class="desc">
+                                                    — 是否需要取消按钮
+                                                    
+                                                    
+                                                </span>
+                                            </div>
+                                            <!--
+                                            -->
+                                            
+                                                <div class="member-data"><span>默认值：</span>true</div>
+                                            
+                                            
+                                            
+                                        </li>
+                                    
+                                    
+                                    
+                                        <li class="li">
+                                            <a name="isCenter"> </a>
+                                            <div class="title">                                                
+                                                <b class="name">isCenter</b>
+                                                <span class="type">{Boolean}</span> 
+                                                
+                                                
+                                                
+                                                
+                                                <span class="desc">
+                                                    — 是否居中
+                                                    
+                                                    
+                                                </span>
+                                            </div>
+                                            <!--
+                                            -->
+                                            
+                                                <div class="member-data"><span>默认值：</span>true</div>
+                                            
+                                            
+                                            
+                                        </li>
+                                    
+                                    
+                                    
+                                        <li class="li">
+                                            <a name="isDrag"> </a>
+                                            <div class="title">                                                
+                                                <b class="name">isDrag</b>
+                                                <span class="type">{Boolean}</span> 
+                                                
+                                                
+                                                
+                                                
+                                                <span class="desc">
+                                                    — 是否唯一
+                                                    
+                                                    
+                                                </span>
+                                            </div>
+                                            <!--
+                                            -->
+                                            
+                                                <div class="member-data"><span>默认值：</span>true</div>
+                                            
+                                            
+                                            
+                                        </li>
+                                    
+                                    
+                                    
+                                        <li class="li">
+                                            <a name="isLayer"> </a>
+                                            <div class="title">                                                
+                                                <b class="name">isLayer</b>
+                                                <span class="type">{Boolean}</span> 
+                                                
+                                                
+                                                
+                                                
+                                                <span class="desc">
+                                                    — 是否需要遮罩层
+                                                    
+                                                    
+                                                </span>
+                                            </div>
+                                            <!--
+                                            -->
+                                            
+                                                <div class="member-data"><span>默认值：</span>true</div>
+                                            
+                                            
+                                            
+                                        </li>
+                                    
+                                    
+                                    
+                                        <li class="li">
+                                            <a name="isOnly"> </a>
+                                            <div class="title">                                                
+                                                <b class="name">isOnly</b>
+                                                <span class="type">{Boolean}</span> 
+                                                
+                                                
+                                                
+                                                
+                                                <span class="desc">
+                                                    — 是否唯一
+                                                    
+                                                    
+                                                </span>
+                                            </div>
+                                            <!--
+                                            -->
+                                            
+                                                <div class="member-data"><span>默认值：</span>false</div>
+                                            
+                                            
+                                            
+                                        </li>
+                                    
+                                    
+                                    
+                                        <li class="li">
+                                            <a name="message"> </a>
+                                            <div class="title">                                                
+                                                <b class="name">message</b>
+                                                <span class="type">{String}</span> 
+                                                
+                                                
+                                                
+                                                
+                                                <span class="desc">
+                                                    — 弹出框为展示文本类型时显示的消息提示文本
+                                                    
+                                                    
+                                                </span>
+                                            </div>
+                                            <!--
+                                            -->
+                                            
+                                                <div class="member-data"><span>默认值：</span>""</div>
+                                            
+                                            
+                                            
+                                        </li>
+                                    
+                                    
+                                    
+                                        <li class="li">
+                                            <a name="param"> </a>
+                                            <div class="title">                                                
+                                                <b class="name">param</b>
+                                                <span class="type">{Object}</span> 
+                                                
+                                                
+                                                
+                                                
+                                                <span class="desc">
+                                                    — 附加参数
+                                                    
+                                                    
+                                                </span>
+                                            </div>
+                                            <!--
+                                            -->
+                                            
+                                            
+                                            
+                                        </li>
+                                    
+                                    
+                                    
+                                        <li class="li">
+                                            <a name="popupTemp"> </a>
+                                            <div class="title">                                                
+                                                <b class="name">popupTemp</b>
+                                                <span class="type">{jQuery Dom}</span> 
+                                                
+                                                
+                                                
+                                                
+                                                <span class="desc">
+                                                    — 弹出框html的jQuery对象
+                                                    
+                                                    
+                                                </span>
+                                            </div>
+                                            <!--
+                                            -->
+                                            
+                                                <div class="member-data"><span>默认值：</span>null</div>
+                                            
+                                            
+                                            
+                                        </li>
+                                    
+                                    
+                                    
+                                        <li class="li">
+                                            <a name="template"> </a>
+                                            <div class="title">                                                
+                                                <b class="name">template</b>
+                                                <span class="type">{html String}</span> 
+                                                
+                                                
+                                                
+                                                
+                                                <span class="desc">
+                                                    — 内容区的html代码片段
+                                                    
+                                                    
+                                                </span>
+                                            </div>
+                                            <!--
+                                            -->
+                                            
+                                                <div class="member-data"><span>默认值：</span>""</div>
+                                            
+                                            
+                                            
+                                        </li>
+                                    
+                                    
+                                    
+                                        <li class="li">
+                                            <a name="time"> </a>
+                                            <div class="title">                                                
+                                                <b class="name">time</b>
+                                                <span class="type">{Number}</span> 
+                                                
+                                                
+                                                
+                                                
+                                                <span class="desc">
+                                                    — 如果type = result 自动消失时间
+                                                    
+                                                    
+                                                </span>
+                                            </div>
+                                            <!--
+                                            -->
+                                            
+                                                <div class="member-data"><span>默认值：</span>null</div>
+                                            
+                                            
+                                            
+                                        </li>
+                                    
+                                    
+                                    
+                                        <li class="li">
+                                            <a name="title"> </a>
+                                            <div class="title">                                                
+                                                <b class="name">title</b>
+                                                <span class="type">{String}</span> 
+                                                
+                                                
+                                                
+                                                
+                                                <span class="desc">
+                                                    — 弹出框的标题
+                                                    
+                                                    
+                                                </span>
+                                            </div>
+                                            <!--
+                                            -->
+                                            
+                                                <div class="member-data"><span>默认值：</span>""</div>
+                                            
+                                            
+                                            
+                                        </li>
+                                    
+                                    
+                                    
+                                        <li class="li">
+                                            <a name="type"> </a>
+                                            <div class="title">                                                
+                                                <b class="name">type</b>
+                                                <span class="type">{String}</span> 
+                                                
+                                                
+                                                
+                                                
+                                                <span class="desc">
+                                                    — 弹出框的种类
+                                                    
+                                                    
+                                                </span>
+                                            </div>
+                                            <!--
+                                            -->
+                                            
+                                                <div class="member-data"><span>默认值：</span>"popup"</div>
+                                            
+                                            
+                                            
+                                        </li>
+                                    
+                                    
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <!-- properties detail END -->
+
+                            <!-- methods detail START -->
+                            
+                            <!-- methods detail END -->
+
+                            <!-- events detail START -->
+                            
+                            <div class="box">
+                                <div class="box-hd">
+                                    <h3>Events Detail</h3>
+                                </div>
+                                <div class="box-bd">
+                                <ul class="detail-list">
+                                    
+                                    <li>
+                                        <div class="title">
+                                            
+                                            
+                                            <b class="name">bindDrag</b>
+                                            <span class="param">()</span>
+                                            
+                                            
+                                            
+                                        </div>
+                                        
+                                        <div class="desc">
+                                            绑定拖拽事件
+                                            
+                                            
+                                        </div>
+                                        
+                                        <dl>
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            <dt>
+
+                                            
+                                            
+                                        </dl>
+                                    </li>
+                                    
+                                    <li>
+                                        <div class="title">
+                                            
+                                            
+                                            <b class="name">close</b>
+                                            <span class="param">(callback)</span>
+                                            
+                                            
+                                            
+                                        </div>
+                                        
+                                        <div class="desc">
+                                            关闭弹出框
+                                            
+                                            
+                                        </div>
+                                        
+                                        <dl>
+                                            
+                                            <dt>参数：</dt>
+                                            <dd>
+                                                <ul class="list param-list">
+                                                
+                                                    <li class="li">
+                                                        &nbsp;
+                                                        <b class="name">callback</b>
+                                                        
+                                                        
+                                                        <span class="type">{Function}</span> 
+                                                        <span class="desc">回调函数</span>
+                                                    </li>
+                                                
+                                                </ul>
+                                            </dd>
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            <dt>
+
+                                            
+                                            
+                                        </dl>
+                                    </li>
+                                    
+                                    <li>
+                                        <div class="title">
+                                            
+                                            
+                                            <b class="name">disableBtn</b>
+                                            <span class="param">(isReset)</span>
+                                            
+                                            
+                                            
+                                        </div>
+                                        
+                                        <div class="desc">
+                                            改变确定按钮状态
+                                            
+                                            
+                                        </div>
+                                        
+                                        <dl>
+                                            
+                                            <dt>参数：</dt>
+                                            <dd>
+                                                <ul class="list param-list">
+                                                
+                                                    <li class="li">
+                                                        &nbsp;
+                                                        <b class="name">isReset</b>
+                                                        
+                                                        
+                                                        <span class="type">{Boolean}</span> 
+                                                        <span class="desc">为true时确定按钮可用，反之不可用</span>
+                                                    </li>
+                                                
+                                                </ul>
+                                            </dd>
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            <dt>
+
+                                            
+                                            
+                                        </dl>
+                                    </li>
+                                    
+                                    <li>
+                                        <div class="title">
+                                            
+                                            
+                                            <b class="name">hide</b>
+                                            <span class="param">(callback)</span>
+                                            
+                                            
+                                            
+                                        </div>
+                                        
+                                        <div class="desc">
+                                            隐藏弹出框
+                                            
+                                            
+                                        </div>
+                                        
+                                        <dl>
+                                            
+                                            <dt>参数：</dt>
+                                            <dd>
+                                                <ul class="list param-list">
+                                                
+                                                    <li class="li">
+                                                        &nbsp;
+                                                        <b class="name">callback</b>
+                                                        
+                                                        
+                                                        <span class="type">{Function}</span> 
+                                                        <span class="desc">回调函数</span>
+                                                    </li>
+                                                
+                                                </ul>
+                                            </dd>
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            <dt>
+
+                                            
+                                            
+                                        </dl>
+                                    </li>
+                                    
+                                    <li>
+                                        <div class="title">
+                                            
+                                            
+                                            <b class="name">positionCenter</b>
+                                            <span class="param">()</span>
+                                            
+                                            
+                                            
+                                        </div>
+                                        
+                                        <div class="desc">
+                                            使弹出框居中
+                                            
+                                            
+                                        </div>
+                                        
+                                        <dl>
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            <dt>
+
+                                            
+                                            
+                                        </dl>
+                                    </li>
+                                    
+                                    <li>
+                                        <div class="title">
+                                            
+                                            
+                                            <b class="name">removeTip</b>
+                                            <span class="param">()</span>
+                                            
+                                            
+                                            
+                                        </div>
+                                        
+                                        <div class="desc">
+                                            隐藏错误信息
+                                            
+                                            
+                                        </div>
+                                        
+                                        <dl>
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            <dt>
+
+                                            
+                                            
+                                        </dl>
+                                    </li>
+                                    
+                                    <li>
+                                        <div class="title">
+                                            
+                                            
+                                            <b class="name">reset</b>
+                                            <span class="param">(newHtml)</span>
+                                            
+                                            
+                                            
+                                        </div>
+                                        
+                                        <div class="desc">
+                                            重置内容区内容
+                                            
+                                            
+                                        </div>
+                                        
+                                        <dl>
+                                            
+                                            <dt>参数：</dt>
+                                            <dd>
+                                                <ul class="list param-list">
+                                                
+                                                    <li class="li">
+                                                        &nbsp;
+                                                        <b class="name">newHtml</b>
+                                                        
+                                                        
+                                                        <span class="type">{html String}</span> 
+                                                        <span class="desc">重置内容区的html，但是事件不会重置</span>
+                                                    </li>
+                                                
+                                                </ul>
+                                            </dd>
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            <dt>
+
+                                            
+                                            
+                                        </dl>
+                                    </li>
+                                    
+                                    <li>
+                                        <div class="title">
+                                            
+                                            
+                                            <b class="name">show</b>
+                                            <span class="param">(callback)</span>
+                                            
+                                            
+                                            
+                                        </div>
+                                        
+                                        <div class="desc">
+                                            显示弹出框
+                                            
+                                            
+                                        </div>
+                                        
+                                        <dl>
+                                            
+                                            <dt>参数：</dt>
+                                            <dd>
+                                                <ul class="list param-list">
+                                                
+                                                    <li class="li">
+                                                        &nbsp;
+                                                        <b class="name">callback</b>
+                                                        
+                                                        
+                                                        <span class="type">{Function}</span> 
+                                                        <span class="desc">回调函数</span>
+                                                    </li>
+                                                
+                                                </ul>
+                                            </dd>
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            <dt>
+
+                                            
+                                            
+                                        </dl>
+                                    </li>
+                                    
+                                    <li>
+                                        <div class="title">
+                                            
+                                            
+                                            <b class="name">showTip</b>
+                                            <span class="param">(str)</span>
+                                            
+                                            
+                                            
+                                        </div>
+                                        
+                                        <div class="desc">
+                                            显示错误信息
+                                            
+                                            
+                                        </div>
+                                        
+                                        <dl>
+                                            
+                                            <dt>参数：</dt>
+                                            <dd>
+                                                <ul class="list param-list">
+                                                
+                                                    <li class="li">
+                                                        &nbsp;
+                                                        <b class="name">str</b>
+                                                        
+                                                        
+                                                        <span class="type">{String}</span> 
+                                                        <span class="desc">错误信息的字符串</span>
+                                                    </li>
+                                                
+                                                </ul>
+                                            </dd>
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            <dt>
+
+                                            
+                                            
+                                        </dl>
+                                    </li>
+                                    
+                                </ul>
+                                </div>
+                            </div>
+                            
+                            <!-- events detail START -->
+
+                        </div>
+                    </div>
+                    <div class="col-sub">
+                            <!-- begin publish.classesIndex -->
+                            <!-- 输出侧边栏 -->
+<div class="box">
+    <div class="box-hd">
+        <h3>Classes</h3>
+    </div>
+    <div class="box-bd">
+        <ul class="list class-list">
+            
+            
+            <li><a href="../symbols/jQuery.cgPopup.html">jQuery.cgPopup</a></li>
+            
+        </ul>
+    </div>
+</div>
+
+                            <!-- end publish.classesIndex -->
+                    </div>
+                </div>
+            </div>
+            <div id="footer">
+    <div>
+        Copyright 2010-2012 , <a href="http://www.cssghost.com" target="_blank">cssghost</a>
+    </div>
+</div>
+<a class="go-top" href="#page">Top</a>
+        </div>
+<link href='http://www.36ria.com/demo/gal/gallery/form/1.0/demo/form/uploader/assets/syntaxhighlighter_3.0.83/sh.css' rel='stylesheet' type='text/css' />
+<script type="text/javascript" src="http://www.36ria.com/demo/gal/gallery/form/1.0/demo/form/uploader/assets/syntaxhighlighter_3.0.83/sh.js"></script>
+<script type="text/javascript">SyntaxHighlighter.all();</script>
+    </body>
+</html>

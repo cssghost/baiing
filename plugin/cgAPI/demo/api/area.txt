@@ -1,0 +1,105 @@
+{
+    "success": true,
+    "list": [
+        {
+            "id": "4d45f384-447b-453e-b59d-09606d8abec6",
+            "area": "北京",
+            "query": "beijing"
+        },
+        {
+            "id": "1df31b00-b2da-449a-9e19-2f0cb0719226",
+            "area": "海淀",
+            "query": "haidian"
+        },
+        {
+            "id": "3dd976e3-3a15-493c-bb4d-8133b95a7d8d",
+            "area": "朝阳",
+            "query": "chaoyang"
+        },
+        {
+            "id": "557bf174-0ce2-463f-9f8a-62fab6dea15a",
+            "area": "东城",
+            "query": "dongcheng"
+        },
+        {
+            "id": "797bdcbb-3c88-46df-953f-74358070e60f",
+            "area": "西城",
+            "query": "xicheng"
+        },
+        {
+            "id": "331b7d67-deb0-4b4a-94ec-5f903b4fc2b3",
+            "area": "崇文",
+            "query": "chongwen"
+        },
+        {
+            "id": "857778ed-cb31-4082-8824-c03d1f1cfa05",
+            "area": "宣武",
+            "query": "xuanwu"
+        },
+        {
+            "id": "4d43b7b3-9f9e-4265-8e52-16f0331654ed",
+            "area": "丰台",
+            "query": "fengtai"
+        },
+        {
+            "id": "8b7514b8-9957-419a-a7f3-cb1838311c2c",
+            "area": "石景山",
+            "query": "shijingshan"
+        },
+        {
+            "id": "ebc1f282-f4b0-4a3e-9f40-82b9f2e0c9ee",
+            "area": "昌平",
+            "query": "changping"
+        },
+        {
+            "guid": "526ce1b3-a132-4765-b8ea-6b767fa54697",
+            "area": "通州",
+            "query": "tongzhou"
+        },
+        {
+            "guid": "7f129c94-0816-47be-a25a-b324682c2fb4",
+            "area": "大兴",
+            "query": "daxing"
+        },
+        {
+            "guid": "fcdd8d86-e000-4db3-ad7e-8af87be163e4",
+            "area": "顺义",
+            "query": "shunyi"
+        },
+        {
+            "guid": "d539a3c2-8484-48c8-9f54-12f63534fa4e",
+            "area": "房山",
+            "query": "fangshan"
+        },
+        {
+            "guid": "f84d061e-63a2-4a29-af27-14e2bb74c44d",
+            "area": "密云",
+            "query": "miyun"
+        },
+        {
+            "guid": "66cae1e5-d6ac-46b7-ac90-53c1840ad7f2",
+            "area": "门头沟",
+            "query": "mentougou"
+        },
+        {
+            "guid": "10b4f84a-3856-4df8-a97e-ef967978d207",
+            "area": "怀柔",
+            "query": "huairou"
+        },
+        {
+            "guid": "d9107f1e-b8dc-4f3f-a515-3cdbf1c589e6",
+            "area": "平谷",
+            "query": "pinggu"
+        },
+        {
+            "guid": "64f9f44a-6d23-4590-a78d-a65e692e8f36",
+            "area": "延庆",
+            "query": "yanqing"
+        },
+        {
+            "guid": "64900d2d-8d13-4533-b52d-e060bf901e60",
+            "area": "燕郊",
+            "query": "yanjiao"
+        }
+    ]
+}

@@ -1,0 +1,27 @@
+.layout-nav {
+  position: fixed;
+  left: 0;
+  top: 100px;
+  width: 200px;
+  border-top: 1px solid #ffffff;
+  border-right: 1px solid #ffffff;
+}
+.layout-nav li {
+  width: 200px;
+  height: 30px;
+  background-color: #000000;
+  border-bottom: 1px solid #ffffff;
+  line-height: 30px;
+  text-align: center;
+  cursor: pointer;
+}
+.layout-nav li a {
+  display: block;
+  width: 200px;
+  height: 30px;
+  color: #ffffff;
+}
+.layout-nav li a:hover {
+  background-color: #cccccc;
+  color: #000000;
+}
