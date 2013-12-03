@@ -1,0 +1,136 @@
+/*input*/
+.label-wrap {
+  margin-bottom: 10px;
+}
+.label-wrap .span-name {
+  float: left;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  width: 150px;
+  height: 24px;
+  line-height: 24px;
+  text-align: right;
+}
+.label-wrap .required {
+  text-align: center;
+  vertical-align: middle;
+  color: red;
+  margin: 0 3px;
+}
+.label-wrap .ver-wrap,
+.label-wrap .input-wrap {
+  position: relative;
+  float: left;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  margin-right: 10px;
+  border: 1px solid #cccccc;
+  border-radius: 3px;
+  padding: 3px 5px;
+  background: #fff;
+}
+.label-wrap .ver-wrap input,
+.label-wrap .input-wrap input {
+  position: relative;
+  top: 0px;
+  border: none;
+  border-width: 0;
+  outline: none;
+}
+.label-wrap .ver-wrap input[type="text"],
+.label-wrap .input-wrap input[type="text"] {
+  height: 18px;
+}
+.label-wrap .ver-wrap .input-text,
+.label-wrap .input-wrap .input-text {
+  width: 200px;
+}
+.label-wrap .ver-wrap textarea,
+.label-wrap .input-wrap textarea {
+  width: 500px;
+  height: 150px;
+  border: none;
+  border-width: 0;
+  overflow-y: auto;
+  resize: none;
+  outline: none;
+}
+.label-wrap .ver-wrap select,
+.label-wrap .input-wrap select {
+  position: relative;
+  top: -1px;
+  margin: 0;
+  border: none;
+  border-width: 0;
+  outline: none;
+}
+.label-wrap .ver-wrap input[type="radio"],
+.label-wrap .input-wrap input[type="radio"] {
+  position: relative;
+  top: 2px;
+}
+.label-wrap .ver-wrap .state,
+.label-wrap .input-wrap .state {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  position: absolute;
+  top: 3px;
+  left: 101%;
+  height: 18px;
+  padding-left: 25px;
+  white-space: nowrap;
+  color: red;
+  font-family: "微软雅黑";
+  background: url("../images/tpls/state-ico.png") no-repeat;
+}
+.label-wrap .ver-wrap .error,
+.label-wrap .input-wrap .error {
+  background-position: 2px -18px;
+}
+.label-wrap .ver-wrap .right,
+.label-wrap .input-wrap .right {
+  background-position: 2px 2px;
+}
+.label-wrap .readonly {
+  background-color: #f5f5f5;
+}
+.label-wrap .readonly input {
+  background-color: #f5f5f5;
+}
+.label-wrap .ver-wrap {
+  display: block;
+  border: none;
+  border-radius: none;
+}
+.label-wrap .checkbox-wrap {
+  width: 400px;
+  padding: 5px;
+  border-color: #50b6d4;
+}
+.label-wrap .checkbox-wrap .btn-small {
+  margin-right: 20px;
+  margin-bottom: 3px;
+}
+.label-wrap .radiobox-wrap {
+  float: left;
+  line-height: 24px;
+  height: 24px;
+}
+.label-wrap .radiobox-wrap label {
+  margin-right: 5px;
+}
+.label-wrap .radiobox-wrap label input {
+  margin-right: 3px;
+}
+.label-wrap .no-bd {
+  border: none;
+}
+.label-wrap .no-bd input[type="text"] {
+  border: 1px solid #cccccc;
+}
+.label-wrap .no-bd select {
+  border: 1px solid #cccccc;
+}

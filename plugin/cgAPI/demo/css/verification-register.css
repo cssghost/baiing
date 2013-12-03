@@ -1,0 +1,9 @@
+.register-wrap {
+  width: 800px;
+  padding: 20px;
+  margin: 100px auto 0;
+  border: 1px solid #cccccc;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}

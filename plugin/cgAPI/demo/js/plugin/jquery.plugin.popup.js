@@ -1,19 +1,20 @@
 (function($){
 /**
  * @author 徐晨 
- * @name jQuery.cgPopup
+ * @name jQuery.cgClassPopup
  * @class 弹出框 <a href="../demo/popup.html" target="_blank">demo</a>
  * @constructor
  * @extends Modernizr
  * @extends jQuery
  * @since version 1.0
  * @param {Object} options 参数对象数据
- * @param {String} options.type 弹出框的种类
+ * @param {String} options.type 弹出框的种类 [ "popup" | "confirm" | "result" ]
  * @param {Object} options.param 附加参数
  * @param {String} options.title 弹出框的标题
  * @param {jQuery Object} options.popupTemp 弹出框html的jQuery对象
  * @param {html} options.template 内容区的html代码片段
  * @param {String} options.message type为confirm时显示的消息提示文本
+ * @param {Number} options.time type为result时自动关闭窗口时间
  * @param {css class} options.addClass 附加弹出框样式
  * @param {Boolean} options.isLayer 是否需要遮罩层
  * @param {Boolean} options.isCenter 是否居中
@@ -28,7 +29,7 @@
  * @param {Function} options.content 内容区的附加函数
  * @param {Function} options.done 确定按钮的附加函数
  * @param {Function} options.cancel 取消按钮的附加函数
- * @example $.cgPopup(
+ * @example $.cgClassPopup(
     {
         type : "popup",
   [可选]param : {},
@@ -61,7 +62,7 @@
     }
 ); 
 oPopup.Events();
- * @example $.cgPopup(
+ * @example $.cgClassPopup(
     {
         type: "confirm",
   [可选]param : {},
@@ -73,7 +74,7 @@ oPopup.Events();
   [可选]cancel : function(opt){}
     }
 ); 
- * @example $.cgPopup(
+ * @example $.cgClassPopup(
     {
         type: "result",
   [可选]param : {},
@@ -86,12 +87,13 @@ oPopup.Events();
     }
 ); 
  */
-$.cgPopup = function(options){
+
+$.cgClassPopup = function(options){
     var $layer, $popup, $close, $title, $con, $error, $btnWrap, $done, $cancel,
-        option = $.extend(/** @lends jQuery.cgPopup.prototype*/{
+        option = $.extend(/** @lends jQuery.cgClassPopup.prototype*/{
             /**
-             * 弹出框的种类
-             * @type String
+             * 弹出框的种类 [ "popup" | "confirm" | "result" ]
+             * @type String 
              * @default "popup"
              */
             type : "popup",
@@ -257,7 +259,7 @@ $.cgPopup = function(options){
         oBtnClose : $close,
         oLayer : $layer,
         /**
-         * @name jQuery.cgPopup#bindDrag
+         * @name jQuery.cgClassPopup#bindDrag
          * @desc  绑定拖拽事件
          * @event
          */
@@ -291,7 +293,7 @@ $.cgPopup = function(options){
             });
         },
         /**
-         * @name jQuery.cgPopup#positionCenter
+         * @name jQuery.cgClassPopup#positionCenter
          * @desc  使弹出框居中
          * @event
          */
@@ -306,7 +308,7 @@ $.cgPopup = function(options){
             });
         },
         /**
-         * @name jQuery.cgPopup#show
+         * @name jQuery.cgClassPopup#show
          * @desc  显示弹出框
          * @event
          * @param {Function} callback 回调函数
@@ -326,7 +328,7 @@ $.cgPopup = function(options){
             }
         },
         /**
-         * @name jQuery.cgPopup#hide
+         * @name jQuery.cgClassPopup#hide
          * @desc  隐藏弹出框
          * @event
          * @param {Function} callback 回调函数
@@ -345,7 +347,7 @@ $.cgPopup = function(options){
             }
         },
         /**
-         * @name jQuery.cgPopup#close
+         * @name jQuery.cgClassPopup#close
          * @desc  关闭弹出框
          * @event
          * @param {Function} callback 回调函数
@@ -366,7 +368,7 @@ $.cgPopup = function(options){
             }
         },
         /**
-         * @name jQuery.cgPopup#showTip
+         * @name jQuery.cgClassPopup#showTip
          * @desc  显示错误信息
          * @event
          * @param {String} str 错误信息的字符串
@@ -382,7 +384,7 @@ $.cgPopup = function(options){
             $error.show().html(str);
         },
         /**
-         * @name jQuery.cgPopup#removeTip
+         * @name jQuery.cgClassPopup#removeTip
          * @desc  隐藏错误信息
          * @event
          */
@@ -390,7 +392,7 @@ $.cgPopup = function(options){
             $error.hide();
         },
         /**
-         * @name jQuery.cgPopup#reset
+         * @name jQuery.cgClassPopup#reset
          * @desc  重置内容区内容
          * @event
          * @param {html String} newHtml 重置内容区的html，但是事件不会重置
@@ -403,7 +405,7 @@ $.cgPopup = function(options){
             }
         },
         /**
-         * @name jQuery.cgPopup#disableBtn
+         * @name jQuery.cgClassPopup#disableBtn
          * @desc  改变确定按钮状态
          * @event
          * @param {Boolean} isReset 为true时确定按钮可用，反之不可用
@@ -554,6 +556,431 @@ $.cgPopup = function(options){
     }
 
     return option;
+};
+
+/**
+ * @author 徐晨 
+ * @name jQuery.cgConfirm
+ * @class 提示框 
+ * @constructor
+ * @extends jQuery
+ * @since version 1.0
+ * @param {Object} options 参数对象数据
+ * @param {Boolean} options.isLayer 是否需要遮罩层
+ * @param {String} options.title 弹出框的标题
+ * @param {String} options.message 显示的消息提示文本
+ * @param {Object} options.doneBtn 确定按钮
+ * @param {Function} options.doneBtn.fun 确定按钮的附加函数
+ * @param {Object} options.cancelBtn 取消按钮
+ * @param {Function} options.cancelBtn.has 是否需要取消按钮
+ * @param {Function} options.cancelBtn.fun 取消按钮的附加函数
+ * @example $.cgConfirm({
+  [可选]isLayer: true,
+  [可选]title: "提示",
+        message : "测试弹出框",
+  [可选]doneBtn : {
+            fun : function( events ){}
+        },
+  [可选]cancelBtn : {
+            has : true,
+            fun : function( events ){}
+        }
+    }); 
+ */
+
+$.cgConfirm = function( options ) {
+    var option = $.extend({
+            title: "提示",
+            message: "",
+            doneBtn: {
+                fun: function( events ){
+                    // alert("OK");
+                }
+            },
+            cancelBtn: {
+                has : true,
+                fun : function( events ) {
+                    // alert("Cancel");
+                }
+            },
+            isLayer : true
+        }, options),
+        $popup = $('<div class="module-popup fn-clear Js-popup-wrap">'+
+            // '<div class="popup-wrap fn-clear Js-popup-wrap">'+
+            '<a href="javascript:void(0)" class="popup-close Js-popup-close"></a> '+
+            '<h6 class="fn-clear popup-tit Js-popup-title">' + option.title + '</h6>'+
+            '<div class="popup-con Js-popup-con">'+
+            '<p class="confirm-msg Js-popup-msg">' + option.message + '</p>'+
+            '</div>'+
+            '<div class="btn-wrap">'+
+   //          '<input type="button" class="popup-btn input-btn Js-popup-done" value="确定">'+
+            // '<input type="button" class="popup-btn input-btn Js-popup-cancel" value="取消">'+
+            '<a class="popup-btn Js-popup-done" href="javascript:;;"><span class="popup-btn-text">确认</span></a>'+
+            '<a class="popup-btn Js-popup-cancel" href="javascript:;;"><span class="popup-btn-text">取消</span></a>'+
+            '</div>'+
+            // '</div>'+
+            '</div>');
+    if ( option.isLayer ) {
+        var $layer = $("<div class='module-popup-layer'></div>");
+        $("body").append($layer);
+    }
+    $("body").append( $popup );
+    // console.log(option);
+    var $confirm = $popup,
+        $confirmTitle = $confirm.find('.Js-popup-title').hide(),
+        $confirmMessage = $confirm.find('.Js-popup-msg'),
+        $confirmDone = $confirm.find('.Js-popup-done'),
+        $confirmCancel = $confirm.find('.Js-popup-cancel').hide(),
+        $confirmClose = $confirm.find('.Js-popup-close'),
+        openConfirm = function() {
+            // bind title
+            if(option.title){
+                $confirmTitle.show();
+            }
+            // bind message
+            if(option.message){
+                $confirmMessage.text( option.message ).show();
+            }
+            // bind done button
+            if(option.doneBtn.fun && $.isFunction(option.doneBtn.fun)){
+                $confirmDone.one("click", function( event ) {
+                    option.doneBtn.fun( event );
+                    closeConfirm();
+                });
+            }
+            // bind close button
+            $confirmClose.one("click", function(){
+                closeConfirm();
+            });
+            // bind cancel button
+            if ( option.cancelBtn.has ) {
+                $confirmCancel.show();
+                if(option.cancelBtn.fun && $.isFunction(option.cancelBtn.fun)){
+                    $confirmCancel.one("click", function( event ) {
+                        option.cancelBtn.fun( event );
+                        closeConfirm();
+                    });
+                }
+                // reset bind close button
+                $confirmClose.off("click").one("click", function(){
+                    $confirmCancel.click();
+                });
+            }
+            // bind wrap position
+            positionCenter();
+            $(window).resize(function(){
+                positionCenter();
+            });
+            $popup.show();
+        },
+        positionCenter = function(){
+            var objWidht = $popup.width(),
+                objHeight = $popup.height();
+            $popup.css( { "margin-left" : "-" + objWidht / 2 + "px" } );
+        },
+        closeConfirm = function() {
+            $popup.remove();
+            if ( option.isLayer ) {
+                $layer.remove();
+            }
+        };
+    // console.log($confirm.length);
+    openConfirm();
+};
+
+/**
+ * @author 徐晨 
+ * @name jQuery.cgResultTips
+ * @class 提示框 
+ * @constructor
+ * @extends jQuery
+ * @since version 1.0
+ * @param {String} options.title 弹出框的标题
+ * @param {String} options.type 弹窗模式 [message | error]
+ * @param {String|Array} options.message 显示的消息提示文本 type为message时为字符串类型，type为error时为字符串数组类型
+ * @param {Number} options.time type为message时自动关闭窗口时间
+ * @example $.cgResultTips({
+  [可选]title: "提示",
+        type : "message|error",
+        message : [message : "string" | error : ["array"]],
+  [可选]time : 2000
+    }); 
+ */
+$.cgResultTips = function(options){
+    var option = $.extend({
+        title : "",
+        type : "",
+        message : [],
+        time : 3000
+    }, options);
+    var str = "";
+    switch(option.type){
+        case "message" :
+            if ( typeof(option.message) == "string" ) {
+                str = '<p class="confirm-msg Js-popup-msg">' + option.message + '</p>';
+            }
+            option.title = option.title ? option.title : "操作成功";
+            option.con = function(opt){
+                setTimeout(function(){
+                    opt.oPopup.fadeOut("normal", function(){
+                        opt.close();
+                    });
+                }, option.time);
+            };
+            break;
+        case "error" :
+            if ( option.message.constructor === Array && option.message.length > 0 ) {
+                for( var i = 0; i < option.message.length; i++ ){
+                    str += '<p class="confirm-error-msg Js-popup-msg">' + option.message[i] + '</p>';
+                }
+            }
+            option.title = option.title ? option.title : "操作失败";
+            option.con = function(opt){
+
+            };
+            break;
+        default :
+            break;
+    };
+    $.cgPopup({
+        title : option.title,
+        template : str,
+        isLayer : true,
+        hasBtn : true,
+        hasCancel : false,
+        content : function(opt){
+            option.con(opt);
+        },
+        done : function(opt){
+            opt.close();
+        }
+    });
+};
+
+/**
+ * @author 徐晨 
+ * @name jQuery.cgPopup
+ * @class 弹出框 
+ * @constructor
+ * @extends jQuery
+ * @since version 1.0
+ * @param {Object} options 参数对象数据
+ * @param {String} options.title 弹出框的标题
+ * @param {jQuery Object} options.popupTemp 弹出框html的jQuery对象
+ * @param {html} options.template 内容区的html代码片段
+ * @param {css class} options.addClass 附加弹出框样式
+ * @param {Boolean} options.isLayer 是否需要遮罩层
+ * @param {Boolean} options.isCenter 是否居中
+ * @param {Boolean} options.isDrag 是否可拖拽
+ * @param {Boolean} options.isOnly 是否为唯一
+ * @param {Object} options.append 是否在目标对象中加载
+ * @param {Boolean} options.append.isAppend 是否在目标对象中加载
+ * @param {jQuery Object} options.append.dom 目标对象的jquery dom
+ * @param {Boolean} options.hasBtn 是否需要按钮
+ * @param {Boolean} options.hasCancel 是否需要取消按钮
+ * @param {Function} options.content 内容区的附加函数
+ * @param {Function} options.done 确定按钮的附加函数
+ * @param {Function} options.cancel 取消按钮的附加函数
+ * @example $.cgPopup(
+    {
+  [可选]title : "弹出框",
+  [可选]popupTemp : null || $('<div class="module-popup fn-clear Js-popup-wrap">'+
+                    '<a href="javascript:void(0)" class="popup-close Js-popup-close"></a> '+
+                    '<h6 class="fn-clear popup-tit Js-popup-title">' + option.title + '</h6>'+
+                    '<div class="popup-con Js-popup-con"></div>'+
+                    '<div class="popup-btn-wrap Js-popup-btn-wrap">'+
+                        '<a class="popup-btn Js-popup-done" href="javascript:;;"><span class="popup-btn-text">确认</span></a>'+
+                        '<a class="popup-btn Js-popup-cancel" href="javascript:;;"><span class="popup-btn-text">取消</span></a>'+
+                    '</div>'+
+                '</div>'),
+        template : "<div></div>",
+  [可选]addClass : "popupClass",
+  [可选]isLayer : true,
+  [可选]isCenter : true,
+  [可选]isDrag : true,
+  [可选]isOnly : false,
+  [可选]append : {
+            isAppend : false,
+            dom : $(".dom")
+        },
+  [可选]hasBtn : true,
+  [可选]hasCancel : true,
+  [可选]content : null || function(opt){},
+  [可选]done : null || function(opt){},
+  [可选]cancel : null || function(opt){}
+    }
+); 
+
+ */
+
+$.cgPopup = function(options){
+    var option = $.extend({
+        title: "提示",
+        template : "",
+        addClass : "",
+        isLayer : true,
+        isCenter : true,
+        isOnly : false,
+        append : {
+            isAppend : false,
+            dom : $(".dom")
+        },
+        // hasError : false,
+        hasBtn : true,
+        hasCancel : true,
+        content : function(option){},
+        done : function(option){},
+        cancel : function(option){}
+    }, options);
+    if ( option.template == "" ) {
+        return false;
+    }
+    var $popup = $('<div class="module-popup fn-clear Js-popup-wrap">'+
+                  // '<div class="popup-wrap fn-clear">'+
+                    '<a href="javascript:void(0)" class="popup-close Js-popup-close"></a> '+
+                    '<h6 class="fn-clear popup-tit Js-popup-title">' + option.title + '</h6>'+
+                    '<div class="popup-con Js-popup-con"></div>'+
+                    '<div class="btn-wrap Js-popup-btn-wrap">'+
+                        // '<input type="button" class="popup-btn input-btn Js-popup-done" value="确定">'+
+                        // '<input type="button" class="popup-btn input-btn Js-popup-cancel" value="取消">'+
+                        '<a class="popup-btn Js-popup-done" href="javascript:;;"><span class="popup-btn-text">确认</span></a>'+
+                        '<a class="popup-btn Js-popup-cancel" href="javascript:;;"><span class="popup-btn-text">取消</span></a>'+
+                    '</div>'+
+                  // '</div>'+
+                '</div>');
+    var $error = $('<ul class="result-tips-error result-tips"></ul>');
+    if ( option.isLayer ) {
+        var $layer = $("<div class='module-popup-layer'></div>");
+        $("body").append($layer);
+    }
+    if ( option.isOnly ) {
+        $(".module-popup-layer").remove();
+        $(".Js-popup-wrap").remove();
+    }
+    if ( option.append.isAppend ) {
+        option.append.dom.append( $popup );
+    } else{
+        $("body").append( $popup );
+    }
+    // if ( option.hasError ) {
+    //     $popup.find(".Js-popup-btn-wrap").after($error);
+    // }
+    // add new class
+    if ( option.addClass ) {
+        $popup.addClass(option.addClass);
+    }
+    var $mainWrap = $popup.find(".Js-popup-main-wrap"),
+        $btnWrap = $popup.find(".Js-popup-btn-wrap"),
+        $btnDone = $btnWrap.find(".Js-popup-done"),
+        $btnCancel = $btnWrap.find(".Js-popup-cancel"),
+        $btnClose = $popup.find(".Js-popup-close"),
+        $con = $popup.find(".Js-popup-con"),
+        positionCenter = function(){
+            var objWidht = $popup.width(),
+                objHeight = $popup.height();
+            $popup.css( { "margin-left" : "-" + objWidht / 2 + "px" } );
+        };
+    // out param
+    $.extend(option, {
+        oPopup : $popup,
+        oBtnWrap : $btnWrap,
+        oBtnDone : $btnDone,
+        oBtnCancel : $btnCancel,
+        oBtnClose : $btnClose,
+        oCon : $con,
+        oTip : $error,
+        /**
+         * @name jQuery.cgPopup#close
+         * @desc  关闭弹出框
+         * @event
+         * @param {Function} callback 回调函数
+         */
+        close : function(){
+            $popup.remove();
+            if ( option.isLayer ) {
+                $layer.remove();
+            }
+        },
+        /**
+         * @name jQuery.cgPopup#showTip
+         * @desc  显示错误信息
+         * @event
+         * @param {String} str 错误信息的字符串
+         */
+        showTip : function(str){
+            $mainWrap.append($error);
+            $error.html(str);
+        },
+        /**
+         * @name jQuery.cgPopup#removeTip
+         * @desc  隐藏错误信息
+         * @event
+         */
+        removeTip : function(str){
+            $error.remove();
+        },
+        /**
+         * @name jQuery.cgPopup#disableBtn
+         * @desc  改变确定按钮状态
+         * @event
+         * @param {Boolean} disable 为true时确定按钮不可用，反之可用
+         */
+        disableBtn : function(disable){
+            if (disable) {
+                option.oBtnDone.prop("disabled", true);
+            }else{
+                option.oBtnDone.prop("disabled", false);
+            }
+        }
+    });
+    // append content template
+    $con.append(option.template);
+
+    $popup.show();
+    // bind popup init function
+    if ( typeof(option.content) ) {
+        option.content(option);
+    }
+
+    if ( option.hasBtn ) {
+        $btnDone.on("click", function(){
+            if ( typeof(option.done) == "function" && !$(this).prop("disabled") ) {
+                option.done(option);
+            }
+        });
+        if ( option.hasCancel ) {
+            $btnCancel.on("click", function(){
+                if ( typeof(option.cancel) == "function" ) {
+                    option.cancel(option);
+                }
+                option.close();
+            });
+            $btnClose.on("click", function(){
+                $btnCancel.click();
+            });
+        } else{
+            $btnCancel.remove();
+            $btnClose.on("click", function(){
+                option.close();
+            });
+        }
+    }else{
+        $btnWrap.remove();
+        $btnClose.on("click", function(){
+            if ( typeof(option.done) == "function" ) {
+                option.done(option);
+            }
+            option.close();
+        });
+    }
+
+    // bind wrap position
+    if ( option.isCenter ) {
+        positionCenter();
+        $(window).resize(function(){
+            positionCenter();
+        });
+    }
 };
 
 

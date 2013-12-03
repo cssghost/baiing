@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>cgClass Verification</title>
+	<!-- dev -->
+	<link href="css/base.css" rel="stylesheet" type="text/css">
+	<link href="css/layout.css" rel="stylesheet" type="text/css">
+	<link href="css/module.css" rel="stylesheet" type="text/css">
+	<link href="css/verification-register.css" rel="stylesheet" type="text/css">
+
+	<script src="js/jquery-1.8.2.js"></script>
+	<script src="js/jquery.plugin.js"></script>
+	<script src="js/plugin/jquery.plugin.verification.js"></script>
+	<!-- /dev -->
+
+	<!-- publish 
+	<link href="css/base.css?t=timestamp" rel="stylesheet" type="text/css">
+	<link href="css/layout.css?t=timestamp" rel="stylesheet" type="text/css">
+	<link href="css/module.css?t=timestamp" rel="stylesheet" type="text/css">
+	<link href="css/verification-register.css?t=timestamp" rel="stylesheet" type="text/css">
+
+	<script src="js/jquery-1.8.2.js?t=timestamp"></script>
+	<script src="js/jquery.plugin.js?t=timestamp"></script>
+	<script src="js/plugin/jquery.plugin.verification.js?t=timestamp"></script>
+	/publish -->
+</head>
+<body>
+	<div class="register-wrap">
+		<div class="label-wrap fn-clear">
+			<div class="span-name">不为空且2到5个字符：</div>
+			<div class="input-wrap">
+				<input type="text" class="input-text Js-verification" data-ver="不为空且2到5个字符:notNull/strRange,{2-5}" />
+			</div>
+		</div>
+		<div class="label-wrap fn-clear">
+			<div class="span-name">是否重复：</div>
+			<div class="input-wrap">
+				<input type="text" class="input-text Js-verification" data-ver="是否重复:notNull/isHave" data-same-id="id" data-same-url="url" />
+			</div>
+		</div>
+		<div class="label-wrap fn-clear">
+			<div class="span-name">手机：</div>
+			<div class="input-wrap">
+				<input type="text" class="input-text Js-verification" data-ver="手机:mobile" />
+			</div>
+		</div>
+		<div class="label-wrap fn-clear">
+			<div class="span-name">邮箱：</div>
+			<div class="input-wrap">
+				<input type="text" class="input-text Js-verification" data-ver="邮箱:email" />
+			</div>
+		</div>
+		<div class="label-wrap fn-clear">
+			<div class="span-name">网址：</div>
+			<div class="input-wrap">
+				<input type="text" class="input-text Js-verification" data-ver="网址:url" />
+			</div>
+		</div>
+		<div class="label-wrap fn-clear">
+			<div class="span-name">整数：</div>
+			<div class="input-wrap">
+				<input type="text" class="input-text Js-verification" data-ver="整数:onlyNum" />
+			</div>
+		</div>
+		<div class="label-wrap fn-clear">
+			<div class="span-name">整数或者浮点数字：</div>
+			<div class="input-wrap">
+				<input type="text" class="input-text Js-verification" data-ver="整数或者浮点数字:onlyNumFloat" />
+			</div>
+		</div>
+		<div class="label-wrap fn-clear">
+			<div class="span-name">只能是数字,小数位为2位：</div>
+			<div class="input-wrap">
+				<input type="text" class="input-text Js-verification" data-ver="只能是数字,小数位为2位:numLast,{1-2}" />
+			</div>
+		</div>
+		<div class="label-wrap fn-clear">
+			<div class="span-name">单选：</div>
+			<div class="input-wrap Js-verification" data-type="notText" data-ver="单选:notSelect">
+				<input type="radio" name="radio" value="radio01" />
+				<input type="radio" name="radio" value="radio02" />
+			</div>
+		</div>
+		<div class="label-wrap fn-clear">
+			<div class="span-name">多选：</div>
+			<div class="input-wrap Js-verification" data-type="notText" data-ver="多选:notSelect">
+				<input type="checkbox" name="checkbox" value="checkbox01" />
+				<input type="checkbox" name="checkbox" value="checkbox02" />
+			</div>
+		</div>
+		<div class="label-wrap fn-clear">
+			<div class="span-name">多选：</div>
+			<div class="input-wrap">
+				<select class="Js-verification" data-ver="多选:notNull">
+					<option value="">choose</option>
+					<option value="option01">option01</option>
+				</select>
+			</div>
+		</div>
+		<div class="label-wrap fn-clear">
+			<div class="span-name">选框：</div>
+			<div class="input-wrap">
+				<select multiple="multiple" class="Js-verification" data-ver="选框:notNull">
+					<option value="">choose</option>
+					<option value="option01">option01</option>
+				</select>
+			</div>
+		</div>
+		<div class="label-wrap fn-clear">
+			<div class="span-name">根据隐藏域判断是否为空：</div>
+			<div class="input-wrap Js-verification" data-type="notText" data-input-type="other" data-ver="根据隐藏域判断是否为空:otherNotNull">
+				<input type="text" class="input-text" />
+				<input type="hidden" class="other" />
+			</div>
+		</div>
+		<div class="label-wrap fn-clear">
+			<input type="button" value="match all" class="Js-matchAll" />
+			<input type="button" value="radio" class="Js-radio" />
+			<input type="button" value="checkbox" class="Js-checkbox" />
+			<input type="button" value="select" class="Js-select" />
+		</div>
+	</div>
+<script>
+$(function() {
+	$(".Js-radio").click(function(){
+		console.log( $("input:radio:checked").val() );
+	});
+	$(".Js-checkbox").click(function(){
+		console.log( $("input:checkbox:checked").val() );
+	});
+	$(".Js-select").click(function(){
+		console.log( $("select").val() );
+	});
+	$.cgVerification({
+		wrap : $(".register-wrap"),
+        hookDom: ".Js-verification",
+        map : "",
+        btn : $(".Js-matchAll"),
+        parseAjaxData : null,
+        successTemp : null,
+        errorTemp : null,
+        init : function(){},
+        error : function($errorDom){
+        	console.log($errorDom);
+        },
+        success : function($btn, event){
+        	console.log($btn, event);
+        },
+        otherInput : ".other"
+	});
+});
+</script>
+</body>
+</html>

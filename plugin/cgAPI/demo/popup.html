@@ -15,14 +15,14 @@
 	/dev -->
 
 	 
-	<link href="css/base.css?t=20131203110814" rel="stylesheet" type="text/css">
-	<link href="css/layout.css?t=20131203110814" rel="stylesheet" type="text/css">
-	<link href="css/popup.css?t=20131203110814" rel="stylesheet" type="text/css">
+	<link href="css/base.css?t=20131203145229" rel="stylesheet" type="text/css">
+	<link href="css/layout.css?t=20131203145229" rel="stylesheet" type="text/css">
+	<link href="css/popup.css?t=20131203145229" rel="stylesheet" type="text/css">
 
-	<script src="js/modernizr.js?t=20131203110814"></script>
-	<script src="js/jquery-1.8.2.js?t=20131203110814"></script>
-	<script src="js/jquery.plugin.js?t=20131203110814"></script>
-	<script src="js/plugin/jquery.plugin.popup.js?t=20131203110814"></script>
+	<script src="js/modernizr.js?t=20131203145229"></script>
+	<script src="js/jquery-1.8.2.js?t=20131203145229"></script>
+	<script src="js/jquery.plugin.js?t=20131203145229"></script>
+	<script src="js/plugin/jquery.plugin.popup.js?t=20131203145229"></script>
 	
 </head>
 <body>
@@ -36,7 +36,7 @@
 $(function() {
 	// type:popup
 	$(".Js-show-type-popup").on("click", function(){
-		$.cgPopup(
+		$.cgClassPopup(
 			{
 				title : "test popup01",
 				content : function (opt) {
@@ -48,7 +48,7 @@ $(function() {
 	});
 	// type:confirm
 	$(".Js-show-type-confirm").on("click", function(){
-		$.cgPopup(
+		$.cgClassPopup(
 			{
 				type: "confirm",
 				title: "confirm",
@@ -62,7 +62,7 @@ $(function() {
 	});
 	// type:result
 	$(".Js-show-type-result").on("click", function(){
-		$.cgPopup(
+		$.cgClassPopup(
 			{
 				type: "result",
 				title: "result",
