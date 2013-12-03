@@ -33,70 +33,84 @@
         <a class="search-button Js-auto-btn" href="javascript:void(0)">搜索</a>
         <ul class="search-list Js-auto-list"></ul>
     </div>
-
+<script id="Js-frame-auto-search-item-template" type="application/template">
+    <li class="auto-item Js-auto-item hide-row">
+        <a href="javascript:void(0)" title="#{title}">#{title}</a>
+    </li>
+</script>
 <script>
 $(function() {
-    cgClass.Create(
-        "Autocomplete",
-        {
-            wrap : $(".Js-auto-wrap"),
-            autoList : ".Js-auto-list",
-            autoItem : ".Js-auto-item",
-            autoText : ".Js-auto-text",
-            autoBtn : $(".Js-auto-btn"),
-            hasBtn : true,
-            hoverClass : "selected",
-            init : function(opt){},
-            createSearchList : function(opt, val){
-                var json = {
-                    "success": true,
-                    "list": [
-                        {
-                            "title": "商旅套餐e-什么是商旅套餐e？"
-                        },
-                        {
-                            "title": "八一套餐e-什么是八一套餐e？"
-                        },
-                        {
-                            "title": "八一套餐e-申请了八一套餐e后，可以更改套餐e吗？..."
-                        },
-                        {
-                            "title": "天翼校园套餐e-校园套餐e有什么套餐e可选包？..."
-                        },
-                        {
-                            "title": "八一套餐e-八一套餐e有什么套餐e可选包？..."
-                        },
-                        {
-                            "title": "天翼校园套餐e-申请了校园套餐e后，可以更改套餐e吗..."
-                        },
-                        {
-                            "title": "大众套餐e卡-大众套餐e卡有什么套餐e可选包？..."
-                        }
-                    ]
-                };
-                opt.addItem(json.list);
-                // cgClass.Ajax({
-                //     url : "api/autocomplete.txt",
-                //     type : "post",
-                //     dataType : "textJson",
-                //     success : function(result){
-                //         if ( result.success ) {
-                //             opt.addItem(result.list);
-                //         }else{
-                //             opt.closeList();
-                //         }
-                //     },
-                //     error : function(result){
-                //         opt.closeList();
-                //     }
-                // });
-            },
-            action : function(opt, val, $item){
-                opt.returnText(val);
-                console.log("action:" + val);
+    $.cgAutoComplete({
+        frameBox : $(".Js-auto-wrap"),
+        autoList : ".Js-auto-list",
+        autoItem : ".Js-auto-item",
+        autoText : ".Js-auto-text",
+        autoBtn : $(".Js-auto-btn"),
+        hoverClass : "selected",
+        init : function(opt){},
+        createSearchList : function(opt, val){
+            var json = {
+                "success": true,
+                "list": [
+                    {
+                        "title": "商旅套餐e-什么是商旅套餐e？"
+                    },
+                    {
+                        "title": "八一套餐e-什么是八一套餐e？"
+                    },
+                    {
+                        "title": "八一套餐e-申请了八一套餐e后，可以更改套餐e吗？..."
+                    },
+                    {
+                        "title": "天翼校园套餐e-校园套餐e有什么套餐e可选包？..."
+                    },
+                    {
+                        "title": "八一套餐e-八一套餐e有什么套餐e可选包？..."
+                    },
+                    {
+                        "title": "天翼校园套餐e-申请了校园套餐e后，可以更改套餐e吗..."
+                    },
+                    {
+                        "title": "大众套餐e卡-大众套餐e卡有什么套餐e可选包？..."
+                    }
+                ]
+            };
+            opt.list.empty();
+            if ( json.list && json.list.constructor === Array && json.list.length ) {
+                $.each(json.list, function( index, item ){
+                    opt.addItem( $("#Js-frame-auto-search-item-template"), item );
+                });
+                opt.showList();
+            }else{
+                opt.closeList();
             }
+            // $.ajax({
+            //     url : "api/autocomplete.txt",
+            //     type : "post",
+            //     dataType : "json",
+            //     success : function(result){
+            //         if ( result.success ) {
+            //             if ( result.list && result.list.constructor === Array && result.list.length ) {
+            //                 opt.list.empty();
+            //                 $.each(result.list, function( index, item ){
+            //                     opt.addItem( $("#Js-frame-auto-search-item-template"), item );
+            //                 });
+            //                 opt.showList();
+            //             }
+            //         }else{
+            //             opt.closeList();
+            //         }
+            //     },
+            //     error : function(result){
+            //         opt.closeList();
+            //     }
+            // });
+        },
+        action : function(opt, val, $item){
+            opt._returnText(val);
+            console.log("action:" + val);
         }
-    );
+    });
 });
 </script>
 </body>

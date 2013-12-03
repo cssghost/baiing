@@ -4,7 +4,7 @@
         <meta charset="utf-8" />
         <meta name="generator" content="JsDoc Toolkit" />
         
-        <title>jQuery.cgResultTips</title>
+        <title>jQuery.cgAutoComplete</title>
         <style>
             /*************************************************************************************
  * Reset
@@ -262,8 +262,8 @@ dl.data .dd{
                             <div class="box constructor-box">
                                 <div class="box-hd">
                                     
-                                    <h3><b class="name"><a href="../symbols/jQuery.cgResultTips.html#constructor">jQuery.cgResultTips</a></b>
-                                        <span class="param">()</span>
+                                    <h3><b class="name"><a href="../symbols/jQuery.cgAutoComplete.html#constructor">jQuery.cgAutoComplete</a></b>
+                                        <span class="param">(options)</span>
                                         
                                         
                                         
@@ -272,14 +272,14 @@ dl.data .dd{
                                 </div>
                                 <div class="box-bd">
                                     
-                                        <p class="desc">描述：提示框</p>
+                                        <p class="desc">描述：自动完成插件 <a href="../demo/autocomplete.html" target="_blank">demo</a></p>
                                     
 
                                     
 
                                     
                                         <p>继承自：
-                                            jQuery
+                                            jQuery, jQuery.getFromTemplate
                                         </p>
                                     
 
@@ -287,7 +287,7 @@ dl.data .dd{
 
                                     
                                         <p>源码：
-                                            <a href="../symbols/src/_Users_Mac_git_baiing_plugin_js_plugin_jquery.plugin.popup.js.html">jquery.plugin.popup.js</a></p>
+                                            <a href="../symbols/src/_Users_Mac_git_baiing_plugin_js_plugin_jquery.plugin.autocomplete.js.html">jquery.plugin.autocomplete.js</a></p>
 
                                     
 
@@ -320,11 +320,11 @@ dl.data .dd{
                                     <ul class="list detail-list">
                                         <li class="li">
                                             <div class="title">
-                                                <b class="name">jQuery.cgResultTips</b>
-                                                <span class="param">()</span>
+                                                <b class="name">jQuery.cgAutoComplete</b>
+                                                <span class="param">(options)</span>
                                             </div>
                                             
-                                            <div class="desc">提示框</div>
+                                            <div class="desc">自动完成插件 <a href="../demo/autocomplete.html" target="_blank">demo</a></div>
                                             
                                             <dl>                                                
                                                 
@@ -336,38 +336,101 @@ dl.data .dd{
                                                         
                                                         <li class="li">
                                                             &nbsp;
-                                                                <b>options.title</b>
+                                                                <b>options</b>
                                                             
                                                             
-                                                            <span class="type"><span class="light fixedFont">{String}</span> </span>
-                                                            <span class="desc">弹出框的标题</span>
+                                                            <span class="type"><span class="light fixedFont">{Object}</span> </span>
+                                                            <span class="desc">参数对象数据</span>
                                                         </li>
                                                         
                                                         <li class="li">
                                                             &nbsp;
-                                                                <b>options.type</b>
+                                                                <b>options.frameBox</b>
                                                             
                                                             
-                                                            <span class="type"><span class="light fixedFont">{String}</span> </span>
-                                                            <span class="desc">弹窗模式 [message | error]</span>
+                                                            <span class="type"><span class="light fixedFont">{jQuery Object}</span> </span>
+                                                            <span class="desc">包裹的jquery dom</span>
                                                         </li>
                                                         
                                                         <li class="li">
                                                             &nbsp;
-                                                                <b>options.message</b>
+                                                                <b>options.autoList</b>
                                                             
                                                             
-                                                            <span class="type"><span class="light fixedFont">{String|Array}</span> </span>
-                                                            <span class="desc">显示的消息提示文本 type为message时为字符串类型，type为error时为字符串数组类型</span>
+                                                            <span class="type"><span class="light fixedFont">{jQuery class}</span> </span>
+                                                            <span class="desc">展示列表的钩子名称</span>
                                                         </li>
                                                         
                                                         <li class="li">
                                                             &nbsp;
-                                                                <b>options.time</b>
+                                                                <b>options.autoItem</b>
                                                             
                                                             
-                                                            <span class="type"><span class="light fixedFont">{Number}</span> </span>
-                                                            <span class="desc">type为message时自动关闭窗口时间</span>
+                                                            <span class="type"><span class="light fixedFont">{jQuery class}</span> </span>
+                                                            <span class="desc">展示项的钩子名称</span>
+                                                        </li>
+                                                        
+                                                        <li class="li">
+                                                            &nbsp;
+                                                                <b>options.autoText</b>
+                                                            
+                                                            
+                                                            <span class="type"><span class="light fixedFont">{jQuery class}</span> </span>
+                                                            <span class="desc">输入框的钩子名称</span>
+                                                        </li>
+                                                        
+                                                        <li class="li">
+                                                            &nbsp;
+                                                                <b>options.autoBtn</b>
+                                                            
+                                                            
+                                                            <span class="type"><span class="light fixedFont">{jQuery Object}</span> </span>
+                                                            <span class="desc">提交按钮的jquery dom</span>
+                                                        </li>
+                                                        
+                                                        <li class="li">
+                                                            &nbsp;
+                                                                <b>options.isSearch</b>
+                                                            
+                                                            
+                                                            <span class="type"><span class="light fixedFont">{Boolean}</span> </span>
+                                                            <span class="desc">是否需要搜索框</span>
+                                                        </li>
+                                                        
+                                                        <li class="li">
+                                                            &nbsp;
+                                                                <b>options.hoverClass</b>
+                                                            
+                                                            
+                                                            <span class="type"><span class="light fixedFont">{css class}</span> </span>
+                                                            <span class="desc">悬停显示项时添加的样式名</span>
+                                                        </li>
+                                                        
+                                                        <li class="li">
+                                                            &nbsp;
+                                                                <b>options.init</b>
+                                                            
+                                                            
+                                                            <span class="type"><span class="light fixedFont">{Function}</span> </span>
+                                                            <span class="desc">模块初始化时的附加事件</span>
+                                                        </li>
+                                                        
+                                                        <li class="li">
+                                                            &nbsp;
+                                                                <b>options.createSearchList</b>
+                                                            
+                                                            
+                                                            <span class="type"><span class="light fixedFont">{Function}</span> </span>
+                                                            <span class="desc">生成显示列表的事件</span>
+                                                        </li>
+                                                        
+                                                        <li class="li">
+                                                            &nbsp;
+                                                                <b>options.action</b>
+                                                            
+                                                            
+                                                            <span class="type"><span class="light fixedFont">{Function}</span> </span>
+                                                            <span class="desc">表单提交的事件</span>
                                                         </li>
                                                         
                                                     </ul>
@@ -389,12 +452,90 @@ dl.data .dd{
                                                 <dt>示例：</dt>
                                                 <dd>
                                                     
-                                                    <pre class='brush: js;'>$.cgResultTips({
-  [可选]title: "提示",
-        type : "message|error",
-        message : [message : "string" | error : ["array"]],
-  [可选]time : 2000
+                                                    <pre class='brush: js;'>$.cgAutoComplete({
+        frameBox : $(".Js-auto-wrap"),
+        autoList : ".Js-auto-list",
+        autoItem : ".Js-auto-item",
+        autoText : ".Js-auto-text",
+        autoBtn : $(".Js-auto-btn"),
+        hoverClass : "selected",
+        init : function(opt){},
+        createSearchList : function(opt, val){
+            var json = {
+                "success": true,
+                "list": [
+                    {
+                        "title": "商旅套餐e-什么是商旅套餐e？"
+                    },
+                    {
+                        "title": "八一套餐e-什么是八一套餐e？"
+                    },
+                    {
+                        "title": "八一套餐e-申请了八一套餐e后，可以更改套餐e吗？..."
+                    },
+                    {
+                        "title": "天翼校园套餐e-校园套餐e有什么套餐e可选包？..."
+                    },
+                    {
+                        "title": "八一套餐e-八一套餐e有什么套餐e可选包？..."
+                    },
+                    {
+                        "title": "天翼校园套餐e-申请了校园套餐e后，可以更改套餐e吗..."
+                    },
+                    {
+                        "title": "大众套餐e卡-大众套餐e卡有什么套餐e可选包？..."
+                    }
+                ]
+            };
+            opt.list.empty();
+            if ( json.list && json.list.constructor === Array && json.list.length ) {
+                $.each(json.list, function( index, item ){
+                    opt.addItem( $("#Js-frame-auto-search-item-template"), item );
+                });
+                opt.showList();
+            }else{
+                opt.closeList();
+            }
+            // $.ajax({
+            //     url : "api/autocomplete.txt",
+            //     type : "post",
+            //     dataType : "json",
+            //     success : function(result){
+            //         if ( result.success ) {
+            //             if ( result.list && result.list.constructor === Array && result.list.length ) {
+            //                 opt.list.empty();
+            //                 $.each(result.list, function( index, item ){
+            //                     opt.addItem( $("#Js-frame-auto-search-item-template"), item );
+            //                 });
+            //                 opt.showList();
+            //             }
+            //         }else{
+            //             opt.closeList();
+            //         }
+            //     },
+            //     error : function(result){
+            //         opt.closeList();
+            //     }
+            // });
+        },
+        action : function(opt, val, $item){
+            opt._returnText(val);
+            console.log("action:" + val);
+        }
     });</pre>
+                                                    
+                                                    <pre class='brush: js;'> <div class="wrap Js-auto-wrap">
+        <div class="search-form">
+            <input class="search-text Js-auto-text" type="text" name="q" x-webkit-speech="" autocomplete="off" />
+        </div>
+        <a class="search-button Js-auto-btn" href="javascript:void(0)">搜索</a>
+        <ul class="search-list Js-auto-list"></ul>
+    </div>
+<script id="Js-frame-auto-search-item-template" type="application/template">
+    <li class="auto-item Js-auto-item hide-row">
+        <a href="javascript:void(0)" title="#{title}">#{title}</a>
+    </li>
+</script></pre>
                                                     
                                                 </dd>                                                
                                                 
