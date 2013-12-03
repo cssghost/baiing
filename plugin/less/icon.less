@@ -1,0 +1,77 @@
+@import "less-base.less";
+/* 
+    @name: icon
+    @overview: icon
+    @author: xuchen
+*/
+
+// icon
+
+.i {
+	.dis-ib();
+	.w(20px); .h(20px);
+	.bg-lib("icon.png", no-repeat);
+}
+
+// search
+
+.i-search {
+	&-a {
+		.bp(0 0);
+	}
+	&-b {
+		.bp(0 -40px);
+	}
+}
+
+// set
+
+.i-set {
+	&-a {
+		.bp(0 -20px);
+	}
+}
+
+// close
+.i-close {
+	&-a {
+		.bp(-20px 0);
+	}
+	&-b {
+		.bp(-20px -20px);
+	}
+	&-c {
+		.bp(-20px -40px);
+	}
+	&-d {
+		.bp(-20px -60px);
+	}
+}
+
+// delete
+
+.i-delete {
+	&-a {
+		.bp(-60px -20px);
+	}
+}
+
+// sort
+
+.i-sort {
+	.dis-ib();
+	.w(7px); .h(8px);
+	.bg-lib("sort-icon.gif", no-repeat);
+	&-down-a {
+		.bp(0 0);
+	}
+	&-down-b {
+		.bp(0 -8px);
+	}
+	&-up-a {
+		.bp(-7px 0);
+	}
+	&-up-b {
+		.bp(-7px -8px);
+	}
+}

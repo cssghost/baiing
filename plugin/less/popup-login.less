@@ -1,0 +1,152 @@
+@import "less-base.less";
+.module-popup-login {
+    .dis-n();
+    z-index: 10101;
+    .w(450px);
+    .pb(10px);
+    .bd(#F70,); .border-radius(5px);
+    .box-shadow( #CACACA, 0 0 6px);
+    & a.popup-close {
+        .pos-a(); right: -16px; top: -16px;
+        .w(32px); .h(32px);
+        .bg-tpls("popup-login.png", no-repeat 0 -64px);
+        .transition(background-position 0.1s linear);
+        &:hover {
+            .bp(0 -64px);
+        }
+    }
+    & .popup-tit {
+        .w(410px); .h(50px);
+        .pd(0); .mg(0 auto);
+        .bg-none();
+        .bc(#FFF);
+        .bb(#F70);
+        font: 500 18px/50px "Microsoft YaHei";
+        .c(#F70);
+    }
+    & .popup-con {
+        .w(320px);
+        .pd(0); .mg(30px auto 0);
+    }
+    & .text {
+        .pos-r(); z-index: 10;
+        .w(300px); .h(34px);
+        .mg(0 auto 25px);
+        .bd(#CCC);
+        .transition(all 0.2s linear);
+    }
+    & .text-error {
+        .bd(#F70);
+        .box-shadow(#F70, 0 0 3px);
+    }
+    & .text input {
+        .w(290px); .h(18px);
+        .mg(8px 5px);
+        .bc(transparent);
+        .bd-none();
+    }
+    & .text .error {
+        .dis-n();
+        .pos-a(); left: -1px; top: 34px;
+        .w(300px); .h(20px);
+        .bg-tpls("popup-login.png", #FFF2F2 no-repeat 0 -102px);
+        .bd(#FF8080);
+        .lh(20px);
+        .ti(25px);
+        .c(#F00);
+    }
+    & .remember {
+        .pos-r(); top: -20px;
+        .w(300px); .h(14px);
+        .pd(10px 0); .mg(0 auto);
+        .lh(14px);
+        .vm();
+    }
+    & .remember input {
+        .pos-r(); top: 3px;
+        .mr(4px);
+    }
+    & .popup-btn-wrap {
+        .pos-r(); top: -10px;
+        .w(314px); .h(32px);
+        .mg(0 auto);
+    }
+    & .popup-btn,
+    & .popup-btn-text {
+        .h(32px);
+        .bg-tpls("popup-login.png", no-repeat);
+        .td-none();
+        font: 500 16px/32px "Microsoft YaHei";
+        letter-spacing: 10px;
+        .c(#FFF);
+    }
+    & .popup-btn {
+        .w(130px);
+        .pr(12px); .mg(0 7px);
+        .bp(right 0);
+        &:hover {
+            .bp(right 0);
+            & .popup-btn-text {
+                .bp(left 0);
+            }
+        }
+        &:active {
+            .bp(right 0);
+            outline: 0;
+            & .popup-btn-text {
+                .bp(left 0);
+            }
+        }
+        &-disabled {
+            .bp(right 0);
+            & .popup-btn-text {
+                .bp(left 0);
+            }
+            &:hover {
+                .bp(right 0);
+                & .popup-btn-text {
+                    .bp(left 0);
+                }
+            }
+            &:active {
+                .bp(right 0);
+                outline: 0;
+                & .popup-btn-text {
+                    .bp(left 0);
+                }
+            }
+        }
+    }
+    & .popup-btn-text {
+        .w(130px);
+        .pl(14px); .ml(-3px);
+        .bp(left 0);
+        .vt();
+    }
+    & .popup-btn-wrap .cancel {
+        .bp(right -32px);
+        &:hover {
+            .bp(right -32px);
+            & .popup-btn-text {
+                .bp(left -32px);
+            }
+        }
+        &:active {
+            .bp(right -32px);
+            outline: -32px;
+            & .popup-btn-text {
+                .bp(left -32px);
+            }
+        }
+        & .popup-btn-text {
+            .bp(left -32px);
+            .c(#666);
+        }
+    }
+    & .confirm-msg{
+        .pos-r(); top: -20px;
+        .c(red);
+    }
+}
+
+

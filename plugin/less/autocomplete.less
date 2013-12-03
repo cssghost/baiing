@@ -1,0 +1,52 @@
+@import "less-base.less";
+
+.wrap {
+    .pos-r();
+    .w(600px); .h(30px);
+    .mg(50px auto 0);
+    .bd(#000);
+    & .search-form {
+        .fl();
+        .w(540px); .h(18px);
+        .pd(6px 4px 6px 5px);
+        .br(#000);
+    }
+    & .search-text {
+        .w(540px); .h(18px);
+        .bc(transparent);
+        .bd-none();
+    }
+    & .search-button {
+        .dis-ib();
+        .fr();
+        .w(50px); .h(30px);
+        .bc(#CCC);
+        .bd-none();
+        .lh(30px);
+        .tc();
+        .c(#000);
+    }
+    & .search-list {
+        .dis-n();
+        .pos-a(); left: -1px; top: 100%;
+        .w(600px);
+        .bd(#999);
+        & li {
+            .w(100%); .h(30px);
+            .lh(30px);
+            .ti(10px);
+            .fz(14px);
+            .c(#333);
+            & a {
+                .c(#333);
+            }
+            &.selected {
+                .bc(#9BBB45);
+                .c(#FFF);
+                & a {
+                    .c(#FFF);
+                }
+            }
+        }
+    }
+}

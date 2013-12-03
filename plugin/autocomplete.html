@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>cgClass Autocomplete</title>
+    <!-- dev -->
+    <link href="css/base.css" rel="stylesheet" type="text/css">
+    <link href="css/layout.css" rel="stylesheet" type="text/css">
+    <link href="css/autocomplete.css" rel="stylesheet" type="text/css">
+
+    <script src="js/modernizr.js"></script>
+    <script src="js/jquery-1.8.2.js"></script>
+    <script src="js/jquery.plugin.js"></script>
+    <script src="js/cgClass/cgClass.js"></script>
+    <script src="js/cgClass/cgClass.Autocomplete.js"></script>
+    <!-- /dev -->
+
+    <!-- publish 
+    <link href="css/base.min.css?t=timestamp" rel="stylesheet" type="text/css">
+    <link href="css/layout.min.css?t=timestamp" rel="stylesheet" type="text/css">
+    <link href="css/autocomplete.min.css?t=timestamp" rel="stylesheet" type="text/css">
+
+    <script src="js/modernizr.js?t=timestamp"></script>
+    <script src="js/jquery-1.8.2.js?t=timestamp"></script>
+    <script src="js/jquery.plugin.js?t=timestamp"></script>
+    <script src="js/cgClass/cgClass.min.js?t=timestamp"></script>
+    <script src="js/cgClass/cgClass.Autocomplete.min.js?t=timestamp"></script>
+    /publish -->
+</head>
+<body>
+
+    <div class="wrap Js-auto-wrap">
+        <div class="search-form">
+            <input class="search-text Js-auto-text" type="text" name="q" x-webkit-speech="" autocomplete="off" />
+        </div>
+        <a class="search-button Js-auto-btn" href="javascript:void(0)">搜索</a>
+        <ul class="search-list Js-auto-list"></ul>
+    </div>
+
+<script>
+$(function() {
+    cgClass.Create(
+        "Autocomplete",
+        {
+            wrap : $(".Js-auto-wrap"),
+            autoList : ".Js-auto-list",
+            autoItem : ".Js-auto-item",
+            autoText : ".Js-auto-text",
+            autoBtn : $(".Js-auto-btn"),
+            hasBtn : true,
+            hoverClass : "selected",
+            init : function(opt){},
+            createSearchList : function(opt, val){
+                var json = {
+                    "success": true,
+                    "list": [
+                        {
+                            "title": "商旅套餐e-什么是商旅套餐e？"
+                        },
+                        {
+                            "title": "八一套餐e-什么是八一套餐e？"
+                        },
+                        {
+                            "title": "八一套餐e-申请了八一套餐e后，可以更改套餐e吗？..."
+                        },
+                        {
+                            "title": "天翼校园套餐e-校园套餐e有什么套餐e可选包？..."
+                        },
+                        {
+                            "title": "八一套餐e-八一套餐e有什么套餐e可选包？..."
+                        },
+                        {
+                            "title": "天翼校园套餐e-申请了校园套餐e后，可以更改套餐e吗..."
+                        },
+                        {
+                            "title": "大众套餐e卡-大众套餐e卡有什么套餐e可选包？..."
+                        }
+                    ]
+                };
+                opt.addItem(json.list);
+                // cgClass.Ajax({
+                //     url : "api/autocomplete.txt",
+                //     type : "post",
+                //     dataType : "textJson",
+                //     success : function(result){
+                //         if ( result.success ) {
+                //             opt.addItem(result.list);
+                //         }else{
+                //             opt.closeList();
+                //         }
+                //     },
+                //     error : function(result){
+                //         opt.closeList();
+                //     }
+                // });
+            },
+            action : function(opt, val, $item){
+                opt.returnText(val);
+                console.log("action:" + val);
+            }
+        }
+    );
+});
+</script>
+</body>
+</html>

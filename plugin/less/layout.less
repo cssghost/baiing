@@ -1,0 +1,24 @@
+@import "less-base.less";
+
+.layout-nav {
+	.pos-f(); left: 0; top: 100px;
+	.w(200px);
+	.bt(#FFF); .br(#FFF);
+	& li {
+		.w(200px;); .h(30px);
+		.bc(#000);
+		.bb(#FFF);
+		.lh(30px);
+		.tc();
+		.cur-p();
+		& a {
+			.dis-b();
+			.w(200px;); .h(30px);
+			.c(#FFF);
+			&:hover {
+				.bc(#CCC);
+				.c(#000);
+			}
+		}
+	}
+}

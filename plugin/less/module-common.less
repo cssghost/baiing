@@ -1,0 +1,70 @@
+﻿@import "less-base";
+// h1, h2, h3, h4.....
+.title (@size, @lh) {
+    font-size: @size;
+    margin: 10px 0;
+    font-family: inherit;
+    font-weight: bold;
+    line-height: @lh;
+    color: inherit;
+}
+// title has background
+.title-hasBg (@width:auto, @height:38px) {
+    width:@width;
+    height: @height;
+    border-left: @bdccc; 
+    border-right: @bdccc; 
+    padding-left: 20px;
+    padding-right: 20px;
+    background: url(../images/t_m-title-bg.png) repeat-x;
+}
+// display:inline-block
+.dib() {
+    display: inline-block;
+    *display: inline;
+    *zoom:1;
+}
+
+// Adaptive-自适应布局
+
+.adaptiveWidth (@width) {
+    width: @width; width: auto; min-width: @width;
+}
+
+.adaptiveHeight (@Height) {
+    height: @Height; height: auto; min-height: @Height;
+}
+
+//Adaptive table
+.AdaptiveTable () {
+    width: 100%;
+    table-layout: fixed;
+}
+
+//pop-url
+@popTitle :'popup-tit.png';
+@popbtn : 'popup-btn.png';
+
+// btn-url
+@btnWhiteUrl :'btn-white.png';
+@btnWhiteSmallUrl :'small-btn-white.png';
+@btnWhiteBigUrl :'big-btn-white.png';
+
+// btn-Y
+@btnLinkY :0px;
+@btnHoverY:-33px;
+@btnActiveY:-66px;
+@btnDisabledY :-99px;
+@btnSmallHoverY :-27px;
+@btnSmallActiveY:-54px;
+@btnSmallDisabledY :-81px;
+
+@btnBigHoverY :-38px;
+@btnBigActiveY:-76px;
+@btnBigDisabledY :-114px;
+// border-style
+@bdf5 :1px solid #f5f5f5;
+// border-style
+@bdccc :1px solid #ccc;
+
+

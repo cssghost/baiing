@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>cgClass popup</title>
+	<!-- dev -->
+	<link href="css/base.css" rel="stylesheet" type="text/css">
+	<link href="css/layout.css" rel="stylesheet" type="text/css">
+	<link href="css/popup.css" rel="stylesheet" type="text/css">
+
+	<script src="js/modernizr.js"></script>
+	<script src="js/jquery-1.8.2.js"></script>
+	<script src="js/plugin/jquery.plugin.popup.js"></script>
+	<script src="js/jquery.plugin.js"></script>
+	<!-- /dev -->
+
+	<!-- publish 
+	<link href="css/base.min.css?t=timestamp" rel="stylesheet" type="text/css">
+	<link href="css/layout.min.css?t=timestamp" rel="stylesheet" type="text/css">
+	<link href="css/popup.min.css?t=timestamp" rel="stylesheet" type="text/css">
+
+	<script src="js/modernizr.js?t=timestamp"></script>
+	<script src="js/jquery-1.8.2.js?t=timestamp"></script>
+	<script src="js/jquery.plugin.js?t=timestamp"></script>
+	/publish -->
+</head>
+<body>
+	<ul class="layout-nav">
+		<li><a href="javascript:void(0)" class="Js-show-type-popup">[default] type:popup</a></li>
+		<li><a href="javascript:void(0)" class="Js-show-type-confirm">type:confirm</a></li>
+		<li><a href="javascript:void(0)" class="Js-show-type-result">type:result</a></li>
+	</ul>
+<script>
+
+$(function() {
+	// type:popup
+	$(".Js-show-type-popup").on("click", function(){
+		$.cgPopup(
+			{
+				title : "test popup01",
+				content : function (opt) {
+				},
+				done : function(opt){
+				}
+			}
+		);
+	});
+	// type:confirm
+	$(".Js-show-type-confirm").on("click", function(){
+		$.cgPopup(
+			{
+				type: "confirm",
+				title: "confirm",
+				doneText : "确定按钮",
+				message : "测试弹出框",
+				done : function(opt){
+					console.log(opt);
+				}
+			}
+		);
+	});
+	// type:result
+	$(".Js-show-type-result").on("click", function(){
+		$.cgPopup(
+			{
+				type: "result",
+				title: "result",
+				doneText : "确定按钮",
+				message : "测试弹出框",
+				time : 3000
+			}
+		);
+	});
+});
+</script>
+</body>
+</html>

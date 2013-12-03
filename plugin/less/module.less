@@ -1,0 +1,123 @@
+@import "module-common.less";
+@import "less-base.less";
+/*input*/
+.label-wrap {
+    .mb(10px);
+    & .span-name {
+        .fl();
+        .dib();
+        .w(100px); .h(24px);
+        .lh(24px);
+        .tr();
+    }
+    & .required {
+        text-align: center;
+        vertical-align: middle;
+        color: red;
+        margin: 0 3px;
+    }
+    & .ver-wrap,
+    & .input-wrap {
+        .pos-r();
+        .fl();
+        .dib();
+        .mr(10px);
+        .bd(#CCC);
+        border: @bdccc;
+        border-radius: 3px;
+        padding: 3px 5px;
+        background: #fff;
+        input {
+            position: relative;
+            top: 0px;
+            border:none;
+            border-width: 0;
+            outline: none;
+        }
+        input[type="text"] {
+            height: 18px;
+        }
+        .input-text {
+            width: 200px;
+        }
+        textarea {
+            width: 500px;
+            height: 150px;
+            border: none;
+            border-width: 0;
+            overflow-y: auto;
+            resize: none;
+            outline: none;
+        }
+        select {
+            position: relative;
+            top: -1px;
+            margin: 0;
+            border: none;
+            border-width: 0;
+            outline: none;
+        }
+        input[type="radio"] {
+            .pos-r();
+            top: 2px;
+        }
+        .state {
+            .dib();
+            .pos-a();
+            top: 3px;
+            left: 101%;
+            height: 18px;
+            .pl(25px);
+            white-space: nowrap;
+            color: red;
+            font-family: "微软雅黑";
+            .bg-tpls("state-ico.png", no-repeat)
+        }
+        .error {
+            .bp(2px -18px);
+        }
+        .right {
+            .bp(2px 2px);
+        }
+    }
+    & .readonly {
+        .bc(#f5f5f5);
+        input {
+            .bc(#f5f5f5);
+        }
+    }
+    & .ver-wrap {
+        display: block;
+        border: none; border-radius: none;
+    }
+    & .checkbox-wrap {
+        width: 400px;
+        padding: 5px;
+        border-color: #50b6d4;
+        .btn-small {
+            margin-right: 20px;
+            margin-bottom: 3px;
+        }
+    }
+    & .radiobox-wrap {
+        float: left;
+        line-height: 24px;
+        height: 24px;
+        label {
+            margin-right: 5px;
+            input {
+                margin-right: 3px;
+            }
+        }
+    }
+    & .no-bd {
+        border: none;
+        input[type="text"] {
+            border: @bdccc;
+        }
+        select {
+            border: @bdccc;
+        }
+    }
+}
+

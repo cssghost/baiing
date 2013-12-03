@@ -107,22 +107,6 @@ body {
   font-weight: bold;
   color: #ff0000;
 }
-.theme-lottery-btn {
-  overflow: hidden;
-  display: block;
-  width: 216px;
-  height: 59px;
-  background: url("../images/temp/theme-lottery-button.png") no-repeat 0 0;
-  border: none;
-  text-indent: -9999px;
-  cursor: pointer;
-}
-.theme-lottery-btn-join {
-  margin: 20px auto 125px;
-  background-position: 0 0;
-  width: 216px;
-  height: 59px;
-}
 .theme-lottery-question {
   width: 945px;
   height: 1105px;
@@ -220,11 +204,38 @@ body {
 }
 .theme-lottery-lottery {
   position: relative;
-  width: 945px;
-  height: 365px;
-  padding: 100px 75px 0 90px;
+  width: 1100px;
+  padding-top: 100px;
   margin: 0 auto 90px;
   background: url("../images/temp/theme-lottery-lottery-paper.png") no-repeat 0 0;
+}
+.theme-lottery-lottery .lottery-tips {
+  width: 120px;
+  height: 65px;
+  padding: 15px;
+  margin: 55px 0 0 820px;
+  border: 1px solid #be272e;
+  line-height: 22px;
+  font: 400 14px/22px "Microsoft YaHei";
+  color: #eb9414;
+}
+.theme-lottery-lottery .lottery-tips span {
+  color: #ffffff;
+}
+.theme-lottery-lottery .lottery-btn-warp {
+  position: relative;
+  width: 360px;
+  height: 80px;
+  margin: 70px auto 0;
+  color: #ffffff;
+}
+.theme-lottery-lottery .lottery-btn-warp .text {
+  display: block;
+  position: absolute;
+  right: 100%;
+  top: 0;
+  font: 400 18px/50px "Microsoft YaHei";
+  white-space: nowrap;
 }
 .theme-lottery-prize-box {
   position: absolute;
@@ -281,6 +292,84 @@ body {
   width: 500px;
   height: 500px;
   background: url("../images/temp/theme-lottery-hammer-over.png") no-repeat 0 0;
+}
+.lottery-leaving-wrap {
+  display: none;
+  width: 552px;
+  height: 330px;
+  padding: 45px 25px 0;
+  margin-left: 250px;
+  background: url("../images/temp/theme-lottery-leaving-wrap.png") no-repeat 0 0;
+}
+.lottery-leaving-wrap h6 {
+  margin-bottom: 20px;
+  font: 400 18px/25px "Microsoft YaHei";
+  color: #ffffff;
+}
+.lottery-leaving-wrap table {
+  width: 550px;
+}
+.lottery-leaving-wrap th {
+  width: 140px;
+  text-align: right;
+  font: 400 18px/60px "Microsoft YaHei";
+  color: #ffd400;
+}
+.lottery-leaving-wrap .btn-wrap {
+  text-align: center;
+}
+.lottery-leaving-wrap .text-wrap,
+.lottery-leaving-wrap .text-wrap-short {
+  width: 336px;
+  height: 22px;
+  padding: 10px;
+  background: url("../images/temp/theme-lottery-leaving-text.png") no-repeat 0 0;
+}
+.lottery-leaving-wrap .text-wrap .text,
+.lottery-leaving-wrap .text-wrap-short .text {
+  width: 336px;
+}
+.lottery-leaving-wrap .text-wrap-short {
+  width: 186px;
+  background-position: 0 -45px;
+}
+.lottery-leaving-wrap .text-wrap-short .text {
+  width: 186px;
+}
+.lottery-leaving-wrap .text {
+  height: 22px;
+  border: none;
+  line-height: 22px;
+  font-size: 14px;
+}
+.theme-lottery-btn {
+  overflow: hidden;
+  display: inline-block;
+  width: 162px;
+  height: 50px;
+  background: url("../images/temp/theme-lottery-button.png") no-repeat 0 0;
+  border: none;
+  text-indent: -9999px;
+  cursor: pointer;
+}
+.theme-lottery-btn-join {
+  width: 216px;
+  height: 59px;
+  margin: 20px auto 125px;
+  background-position: 0 0;
+}
+.theme-lottery-btn-reset {
+  margin: 0 7px;
+  background-position: 0 -164px;
+}
+.theme-lottery-btn-leaving {
+  display: none;
+  margin: 0 7px;
+  background-position: 0 -112px;
+}
+.theme-lottery-btn-submit {
+  background-position: 0 -60px;
+  margin-top: 10px;
 }
 .theme-lottery-popup {
   width: 390px;

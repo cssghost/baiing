@@ -104,22 +104,6 @@ body {
     }
 }
 
-.theme-lottery-btn {
-    overflow: hidden;
-    .dis-b();
-    .w(216px); .h(59px);
-    .bg-temp("theme-lottery-button.png", no-repeat 0 0);
-    .bd-none();
-    .ti(-9999px);
-    .cur-p();
-}
-
-.theme-lottery-btn-join {
-    .mg(20px auto 125px);
-    .bp(0 0);
-    .w(216px); .h(59px);
-}
-
 // question
 
 .theme-lottery-question {
@@ -215,9 +199,32 @@ body {
 // lottery
 .theme-lottery-lottery {
     .pos-r();
-    .w(945px); .h(365px);
-    .pd(100px 75px 0 90px); .mg(0 auto 90px);
+    .w(1100px);
+    .pt(100px); .mg(0 auto 90px);
     .bg-temp("theme-lottery-lottery-paper.png", no-repeat 0 0);
+    & .lottery-tips {
+        .w(120px); .h(65px);
+        .pd(15px); .mg(55px 0 0 820px);
+        .bd(#BE272E);
+        .lh(22px);
+        font: 400 14px/22px "Microsoft YaHei";
+        .c(#EB9414);
+        & span {
+            .c(#FFF);
+        }
+    }
+    & .lottery-btn-warp {
+        .pos-r();
+        .w(360px); .h(80px);
+        .mg(70px auto 0);
+        .c(#FFF);
+        & .text {
+            .dis-b();
+            .pos-a(); right: 100%; top: 0;
+            font: 400 18px/50px "Microsoft YaHei";
+            white-space: nowrap;
+        }
+    }
 }
 .theme-lottery-prize-box {
     .pos-a(); left: 50%;
@@ -268,7 +275,85 @@ body {
         .bg-temp("theme-lottery-hammer-over.png", no-repeat 0 0);
     }
 }
+.lottery-leaving-wrap {
+    .dis-n();
+    .w(552px); .h(330px);
+    .pd(45px 25px 0); .ml(250px);
+    .bg-temp("theme-lottery-leaving-wrap.png", no-repeat 0 0);
+    & h6 {
+        .mb(20px);
+        font: 400 18px/25px "Microsoft YaHei";
+        .c(#FFF);
+    }
+    & table {
+        .w(550px);
+    }
+    & th {
+        .w(140px);
+        .tr();
+        font: 400 18px/60px "Microsoft YaHei";
+        .c(#FFD400);
+    }
+    & .btn-wrap {
+        .tc();
+    }
+    & .text-wrap,
+    & .text-wrap-short {
+        .w(336px); .h(22px);
+        .pd(10px);
+        .bg-temp("theme-lottery-leaving-text.png", no-repeat 0 0);
+        & .text {
+            .w(336px);
+        }
+    }
+    & .text-wrap-short {
+        .w(186px);
+        .bp(0 -45px);
+        & .text {
+            .w(186px);
+        }
+    }
+    & .text {
+        .h(22px);
+        .bd-none();
+        .lh(22px);
+        .fz(14px);
+    }
+}
 
+// btn
+ 
+.theme-lottery-btn {
+    overflow: hidden;
+    .dis-ib();
+    .w(162px); .h(50px);
+    .bg-temp("theme-lottery-button.png", no-repeat 0 0);
+    .bd-none();
+    .ti(-9999px);
+    .cur-p();
+}
+
+.theme-lottery-btn-join {
+    .w(216px); .h(59px);
+    .mg(20px auto 125px);
+    .bp(0 0);
+}
+
+.theme-lottery-btn-reset {
+    .mg(0 7px);
+    .bp(0 -164px);
+}
+
+.theme-lottery-btn-leaving {
+    .dis-n();
+    .mg(0 7px);
+    .bp(0 -112px);
+}
+
+.theme-lottery-btn-submit {
+    .bp(0 -60px);
+    .mt(10px);
+}
 
 // popup
 

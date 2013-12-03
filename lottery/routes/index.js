@@ -22,8 +22,8 @@ exports.doLottery = function(req, res){
     var thisCookie = new cookie(_cookieData);
     var result = {};
     var num = thisCookie.get('lotteryNum');
-    var arrPrize = ["failed", "third", "second", "first"];
-    var prize = parseInt(Math.random()*(3-0+1)+0);
+    var arrPrize = ["failed", "third", "second", "first", "lucky"];
+    var prize = parseInt(Math.random()*(4-0+1)+0);
     num = ( num == '' ) ? 3 : Math.floor(num);
     result.success = true;
     result.num = num;

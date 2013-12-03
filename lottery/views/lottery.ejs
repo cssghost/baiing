@@ -39,22 +39,48 @@
                 <div class="hammer"></div>
             </div>
         </div>
+        <div class="lottery-tips">
+            <span>提示：</span><br />在刮奖区点击鼠标，可砸出奖品
+        </div>
+        <div class="lottery-btn-warp">
+            <span class="text">您还有1次抽奖机会：</span>
+            <input type="button" class="theme-lottery-btn theme-lottery-btn-reset Js-reset" value="我要参与" />
+            <input type="button" class="theme-lottery-btn theme-lottery-btn-leaving Js-leaving" value="我要参与" />
+        </div>
+        <div class="lottery-leaving-wrap">
+            <h6>请填写您的个人信息</h6>
+            <table>
+                <tr>
+                    <th>姓名：</th>
+                    <td>
+                        <div class="text-wrap-short">
+                            <input type="text" class="text" />
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>联系电话：</th>
+                    <td>
+                        <div class="text-wrap-short">
+                            <input type="text" class="text" />
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>联系地址：</th>
+                    <td>
+                        <div class="text-wrap">
+                            <input type="text" class="text" />
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="btn-wrap"><input type="button" class="theme-lottery-btn theme-lottery-btn-submit" value="提交" /></td>
+                </tr>
+            </table>
+        </div>
     </div>
     <div class="theme-lottery-footer">版权所有：湖南电信<span>技术支持：百应科技(北京)有限公司</span></div>
-
-    <div class="wrap">
-        <div class="lottery-result lottery-result-first">
-            <div class="layer-left"></div>
-            <div class="layer-right"></div>
-            <div class="layer-block"></div>
-        </div>
-        <input type="button" value="继续抽奖" class="reset" />
-        <input type="button" value="套餐" class="Js-scene" data-scene="pack" />
-        <input type="button" value="手机" class="Js-scene" data-scene="mobile" />
-        <input type="button" value="营业厅" class="Js-scene" data-scene="hall" />
-        <input type="button" value="查找附近" class="Js-scene" data-scene="near" />
-        <input type="button" value="出国服务" class="Js-scene" data-scene="abroad" />
-    </div>
 
 <script>
 $(function() {
@@ -62,6 +88,9 @@ $(function() {
         $hammer = $lotteryBox.find(".hammer"),
         $hammerOver = $lotteryBox.find(".hammer-over"),
         $prize = $lotteryBox.find(".Js-prize"),
+        $reset = $(".Js-reset"),
+        $leaving = $(".Js-leaving"),
+        $leavingWrap = $(".lottery-leaving-wrap");
         hasLottery = false;
     $lotteryBox.on("mouseenter", function(e){
         if ( hasLottery ) {
@@ -106,9 +135,10 @@ $(function() {
                             $hammer.hide();
                             $hammerOver.hide();
                             $prize.removeClass().addClass("prize-" + result.prize);
-                            result.num--;
-                            $.cookie("lotteryNum", result.num,{ expires: 7, path: '/' });
                             isLottery = true;
+                            if ( result.prize != "failed" ) {
+                                $leaving.show();
+                            }
                         } else{
                             alert("操作异常，请重新尝试");
                         }
@@ -126,65 +156,16 @@ $(function() {
         }
         $hammer.hide();
         $(document).off("mousemove mousedown mouseup");
-    })
+    });
 
+    $reset.on("click", function(){
+        hasLottery = false;
+        $prize.removeClass().addClass("prize-default");
+    });
 
-
-
-
-
-
-
-
-
-
-    // var $lotteryBox = $(".lottery-result"),
-    //     $layerLeft = $lotteryBox.find(".layer-left"),
-    //     $layerRight = $lotteryBox.find(".layer-right"),
-    //     isLottery = false;
-    // $lotteryBox.on("click", function(event){
-    //     if ( !isLottery && !$layerLeft.is(":animated") ) {
-            // $.ajax({
-            //     url : "/doLottery",
-            //     type : "post",
-            //     data : {},
-            //     dataType : "json",
-            //     success : function(result){
-            //         // console.log(result);
-            //         if ( result.success ) {
-            //             if ( result.num <= 0 ) {
-            //                 alert("您的剩余抽奖次数为0，感谢您的参与！");
-            //                 return false;
-            //             }
-            //             var width = $lotteryBox.width(),
-            //                 show = event.offsetX ? event.offsetX : event.originalEvent.layerX,
-            //                 widthL = show,
-            //                 widthR = width - show;
-            //             $lotteryBox.removeClass().addClass("lottery-result lottery-result-" + result.prize);
-            //             $layerLeft.width(widthL);
-            //             $layerRight.width(widthR);
-            //             $layerLeft.animate({ width: 0 }, 400);
-            //             $layerRight.animate({ width: 0 }, 400);
-            //             result.num--;
-            //             $.cookie("lotteryNum", result.num,{ expires: 7, path: '/' });
-            //             isLottery = true;
-            //         } else{
-            //             alert("操作异常，请重新尝试");
-            //         }
-            //     },
-            //     error : function(){
-            //         alert("操作异常，请重新尝试");
-            //     }
-            // });
-    //     }
-    // });
-
-    // $(".reset").on("click", function(){
-    //     isLottery = false;
-    //     $layerLeft.animate({ width: 50 + "%" }, 400);
-    //     $layerRight.animate({ width: 50 + "%" }, 400);
-    //     popup.show();
-    // });
+    $leaving.on("click", function(){
+        $leavingWrap.show();
+    });
 
     // $(".Js-scene").on("click", function(){
     //     var $scene = $(this),
@@ -198,26 +179,6 @@ $(function() {
     //     if( $.cookie("scene").split(",").length > 3 ){
     //         popup.show();
     //     }
-    // });
-
-    // var popup = $.cgPopup({
-    //     title : "提示",
-    //     autoShow : false,
-    //     cancel : function(option){
-    //         option.hide();
-    //     },
-    //     done : function(option){
-    //         option.hide();
-    //     }
-    // });
-
-    // $(".jiathis_button_tsina").on("click", function(){
-    //     window.location = "http://www.baidu.com";
-    //     // popup.show();
-    // });
-    // $(document).on("click", "span.jtico", function(){
-    //     window.location = "http://www.baidu.com";
-    //     // popup.show();
     // });
 
 });
