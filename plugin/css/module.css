@@ -134,3 +134,37 @@
 .label-wrap .no-bd select {
   border: 1px solid #cccccc;
 }
+.module-tree-list li {
+  position: relative;
+  clear: both;
+  white-space: nowrap;
+}
+.module-tree-list li .tree-icon {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 20px;
+  height: 20px;
+}
+.module-tree-list li .name {
+  margin-left: 20px;
+  line-height: 20px;
+  color: #333333;
+}
+.module-tree-list li .name:hover {
+  color: #ff0000;
+}
+.module-tree-list li .icon-lv {
+  width: 20px;
+  height: 20px;
+  background: url("../images/lib/icon.png") no-repeat;
+}
+.module-tree-list li.off .icon-lv {
+  background-position: -40px -40px;
+}
+.module-tree-list li.on .icon-lv {
+  background-position: -40px -60px;
+}
+.module-tree-list li.last .icon-lv {
+  background: none;
+}

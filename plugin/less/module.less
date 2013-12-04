@@ -121,3 +121,43 @@
     }
 }
 
+// tree
+.module-tree-list {
+    & li {
+        .pos-r();
+        clear : both;
+        white-space:nowrap;
+        & .tree-icon {
+            .pos-a(); left: 0; top: 0;
+            .w(20px); .h(20px);
+        }
+        & .name {
+            .ml(20px);
+            .lh(20px);
+            .c(#333);
+            &:hover {
+                .c(red);
+            }
+        }
+        & .icon-lv {
+            .w(20px); .h(20px);
+            .bg-lib("icon.png", no-repeat);
+        }
+        &.off {
+            .icon-lv {
+                .bp(-40px -40px);
+            }
+        }
+        &.on {
+            .icon-lv {
+                .bp(-40px -60px);
+            }
+        }
+        &.last {
+            .icon-lv {
+                .bg-none();
+            }
+        }
+    }
+}
+
